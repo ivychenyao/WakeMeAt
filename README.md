@@ -15,3 +15,5 @@ Swift
 
 ## Mockups
 ![alt tag](https://raw.githubusercontent.com/ivychenyao/WakeMeAt/master/Assets/Screens1-4b.JPG "Map screen")
+![alt tag](https://raw.githubusercontent.com/ivychenyao/WakeMeAt/master/Assets/Screens5-6.JPG "Map screen")
+![alt tag](https://raw.githubusercontent.com/ivychenyao/WakeMeAt/master/Assets/DefaultSettings.JPG "Map screen")
