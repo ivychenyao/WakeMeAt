@@ -14,4 +14,4 @@ Swift
 * Alarm screen
 
 ## Mockups
-![alt tag](https://raw.githubusercontent.com/ichenyao/WakeMeAt/master/Assets/Screens1-4b.JPG "Map screen")
+![alt tag](https://raw.githubusercontent.com/ivychenyao/WakeMeAt/master/Assets/Screens1-4b.JPG "Map screen")
