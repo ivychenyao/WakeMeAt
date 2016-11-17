@@ -15,6 +15,7 @@
 		F129F2A91DB83F71001B3C8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F129F2A71DB83F71001B3C8A /* LaunchScreen.storyboard */; };
 		F129F2B41DB83F71001B3C8A /* WakeMeAtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F129F2B31DB83F71001B3C8A /* WakeMeAtTests.swift */; };
 		F1A14CD81DDE5BE800262503 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A14CD71DDE5BE800262503 /* MainViewController.swift */; };
+		F1A14CDA1DDE692000262503 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A14CD91DDE692000262503 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		F129F2B31DB83F71001B3C8A /* WakeMeAtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeMeAtTests.swift; sourceTree = "<group>"; };
 		F129F2B51DB83F71001B3C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1A14CD71DDE5BE800262503 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F1A14CD91DDE692000262503 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				F129F29B1DB83F71001B3C8A /* AppDelegate.swift */,
 				F129F29D1DB83F71001B3C8A /* ViewController.swift */,
 				F129F29F1DB83F71001B3C8A /* Main.storyboard */,
+				F1A14CD91DDE692000262503 /* SettingsViewController.swift */,
 				F1A14CD71DDE5BE800262503 /* MainViewController.swift */,
 				F129F2A51DB83F71001B3C8A /* Assets.xcassets */,
 				F129F2A71DB83F71001B3C8A /* LaunchScreen.storyboard */,
@@ -208,6 +211,7 @@
 				F129F2A41DB83F71001B3C8A /* WakeMeAt.xcdatamodeld in Sources */,
 				F129F29E1DB83F71001B3C8A /* ViewController.swift in Sources */,
 				F129F29C1DB83F71001B3C8A /* AppDelegate.swift in Sources */,
+				F1A14CDA1DDE692000262503 /* SettingsViewController.swift in Sources */,
 				F1A14CD81DDE5BE800262503 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,16 +17,13 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.showsUserLocation = true
         
         // How accurate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
-        
-        
-        
         
         self.mapView.delegate = self
     }
