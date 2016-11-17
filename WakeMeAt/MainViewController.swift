@@ -9,29 +9,45 @@
 import UIKit
 import MapKit
 
-class MainViewController: UIViewController,MKMapViewDelegate {
+class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
+    var locationManager: CLLocationManager = CLLocationManager()
     var myPin:MKPinAnnotationView!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mapView.delegate = self
         
-        dropPin(latitude: 40.730872, longitude: -74.002066)
-
+        // How accurate
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        
+        
+        
+        
+        self.mapView.delegate = self
     }
     
     
-    func dropPin(latitude: Double, longitude: Double) {
-        let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+    func dropPin(location: CLLocation) {
         let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
+        let coord: CLLocationCoordinate2D = location.coordinate
+        pin.coordinate = coord
         pin.title = "title"
         
         mapView.addAnnotation(pin)
     }
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+        
+        dropPin(location: locations[locations.count - 1])
+        
+    
+    }
 
     
 
