@@ -237,10 +237,10 @@
             </objects>
             <point key="canvasLocation" x="760.79999999999995" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="R9e-lb-b5J">
             <objects>
-                <viewController id="9Lk-f6-Y0K" sceneMemberID="viewController">
+                <viewController id="9Lk-f6-Y0K" customClass="MainViewController" customModule="WakeMeAt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1fg-df-fEr"/>
                         <viewControllerLayoutGuide type="bottom" id="OJc-tw-nCS"/>
@@ -262,6 +262,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="Fkh-uF-FrW" id="J5O-OT-ggm"/>
                         <outlet property="searchDisplayController" destination="fSd-7p-DAu" id="5zD-nJ-MN0"/>
                     </connections>
                 </viewController>
