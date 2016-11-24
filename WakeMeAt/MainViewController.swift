@@ -17,6 +17,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "WakeMeAt"
         mapView.showsUserLocation = true
         
         // How accurate
@@ -33,15 +34,25 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         let pin = MKPointAnnotation()
         let coord: CLLocationCoordinate2D = location.coordinate
         pin.coordinate = coord
-        pin.title = "title"
+        pin.title = "Destination" // Add address of inputted destination
         
         mapView.addAnnotation(pin)
     }
+    
+    
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations)
+    // Had to make private
+    private func locationManager(_ manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        let location = locations.last as! CLLocation
         
-        dropPin(location: locations[locations.count - 1])
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        self.mapView.setRegion(region, animated: true)
+        
+        // print(locations)
+        
+        // dropPin(location: locations[locations.count - 1] as! CLLocation)
         
     
     }
