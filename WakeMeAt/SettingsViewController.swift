@@ -11,17 +11,11 @@ import UIKit
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     // Snooze stepper
-    @IBOutlet weak var snoozeValue: UILabel!
-    
     @IBOutlet weak var stepper: UIStepper!
-    
-    @IBAction func stepperValueChanged(sender: UIStepper) {
-        snoozeValue.text = "\(Int(stepper.value))"
-    }
+    @IBOutlet weak var stepperValue: UILabel!
 
     // Alarm sound choices picker
     @IBOutlet weak var alarmSoundChoices: UIPickerView!
-    
     
     
     var alarmSoundChoicesData: [String] = [String]()
@@ -37,22 +31,31 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         // Input data into alarm sound choices data array
         alarmSoundChoicesData = ["Phone Ringing","Police Siren","Doorbell","Ambulance","Horn Honk",
-                                 "People Screaming","None"]
+                                 "Fire Alarm","None"]
         
         // Stepper properties
         //stepper.value = 5
         stepper.autorepeat = true
         stepper.maximumValue = 15
         stepper.minimumValue = 1
+        
+        // Make snooze value integer, not double
+        let stepperVal:Int = lround(self.stepper.value)
+        self.stepperValue.text = "\(stepperVal)"
     }
     
-    
+    // Change stepper label every time stepper is clicked
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        let stepperVal:Int = lround(self.stepper.value)
+        self.stepperValue.text = "\(stepperVal)"
+    }
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // Number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

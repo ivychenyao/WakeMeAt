@@ -71,8 +71,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="v4P-s8-M84">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" maximumValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="v4P-s8-M84">
                                 <rect key="frame" x="213" y="480" width="94" height="29"/>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="oWf-QR-BvI" eventType="valueChanged" id="SaI-qQ-FVQ"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b88-ye-cYh">
                                 <rect key="frame" x="185" y="480" width="13" height="29"/>
@@ -152,11 +155,11 @@
                             <constraint firstItem="KUX-jS-TvD" firstAttribute="centerY" secondItem="CZh-xd-wKK" secondAttribute="centerY" id="5xW-gj-kBS"/>
                             <constraint firstItem="CZh-xd-wKK" firstAttribute="bottom" secondItem="v4P-s8-M84" secondAttribute="bottom" id="7EN-6v-ii3"/>
                             <constraint firstItem="v4P-s8-M84" firstAttribute="centerY" secondItem="CZh-xd-wKK" secondAttribute="centerY" id="8wD-5o-qU8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KUX-jS-TvD" secondAttribute="trailing" constant="4" id="AO4-qE-6tT"/>
                             <constraint firstItem="se9-Rv-EiP" firstAttribute="leading" secondItem="8g2-QY-zt1" secondAttribute="leading" id="BPC-1J-KBz"/>
                             <constraint firstItem="Ids-Zp-a2L" firstAttribute="centerY" secondItem="Hue-Gg-wca" secondAttribute="centerY" id="BTI-nX-uVZ"/>
                             <constraint firstItem="se9-Rv-EiP" firstAttribute="top" secondItem="8g2-QY-zt1" secondAttribute="bottom" constant="82" id="E80-Bd-EO5"/>
                             <constraint firstItem="b88-ye-cYh" firstAttribute="centerY" secondItem="CZh-xd-wKK" secondAttribute="centerY" id="Efo-YZ-hEd"/>
-                            <constraint firstItem="b88-ye-cYh" firstAttribute="leading" secondItem="CZh-xd-wKK" secondAttribute="trailing" constant="98" id="Em7-1x-iPq"/>
                             <constraint firstItem="Ohn-9s-xpo" firstAttribute="top" secondItem="POK-0L-S0O" secondAttribute="bottom" constant="15" id="FF7-qy-ctG"/>
                             <constraint firstItem="POK-0L-S0O" firstAttribute="top" secondItem="se9-Rv-EiP" secondAttribute="bottom" constant="80" id="G6H-Oa-jyR"/>
                             <constraint firstItem="Ids-Zp-a2L" firstAttribute="leading" secondItem="Hue-Gg-wca" secondAttribute="trailing" constant="7" id="IoS-xE-uBj"/>
@@ -170,26 +173,22 @@
                             <constraint firstItem="Hue-Gg-wca" firstAttribute="leading" secondItem="zAs-tw-LgJ" secondAttribute="leading" id="Vbm-z8-gdV"/>
                             <constraint firstAttribute="trailing" secondItem="lMM-0V-H80" secondAttribute="trailing" constant="20" id="Vhc-T0-Jq2"/>
                             <constraint firstItem="8g2-QY-zt1" firstAttribute="top" secondItem="3b6-SL-XoO" secondAttribute="bottom" constant="18" id="WHu-Rw-04d"/>
-                            <constraint firstItem="KUX-jS-TvD" firstAttribute="trailing" secondItem="lMM-0V-H80" secondAttribute="trailing" id="Y8X-5y-6BJ"/>
                             <constraint firstItem="CZh-xd-wKK" firstAttribute="top" secondItem="Hue-Gg-wca" secondAttribute="bottom" constant="27" id="YRT-cP-Rzt"/>
                             <constraint firstItem="zAs-tw-LgJ" firstAttribute="centerY" secondItem="Ohn-9s-xpo" secondAttribute="centerY" id="aHJ-vW-lSp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xBI-04-O5G" secondAttribute="centerXWithinMargins" constant="20" id="bEL-xh-JsX"/>
                             <constraint firstItem="kTt-Mc-Rkq" firstAttribute="top" secondItem="lMM-0V-H80" secondAttribute="bottom" constant="9" id="bNy-pa-nKM"/>
                             <constraint firstItem="CZh-xd-wKK" firstAttribute="baseline" secondItem="b88-ye-cYh" secondAttribute="baseline" id="gIQ-Lg-flW"/>
                             <constraint firstItem="KUX-jS-TvD" firstAttribute="leading" secondItem="v4P-s8-M84" secondAttribute="trailing" constant="15" id="goR-zV-kgY"/>
-                            <constraint firstItem="KUX-jS-TvD" firstAttribute="leading" secondItem="v4P-s8-M84" secondAttribute="trailing" constant="15" id="i8M-UH-rul"/>
                             <constraint firstItem="POK-0L-S0O" firstAttribute="leading" secondItem="se9-Rv-EiP" secondAttribute="leading" id="iYy-X8-hWL"/>
                             <constraint firstItem="Ids-Zp-a2L" firstAttribute="trailing" secondItem="xBI-04-O5G" secondAttribute="trailing" id="ias-7S-fx4"/>
                             <constraint firstItem="kTt-Mc-Rkq" firstAttribute="trailing" secondItem="xBI-04-O5G" secondAttribute="trailing" id="igD-sa-UX0"/>
                             <constraint firstItem="zAs-tw-LgJ" firstAttribute="leading" secondItem="Ohn-9s-xpo" secondAttribute="trailing" constant="7" id="jSJ-rf-Xi7"/>
-                            <constraint firstItem="KUX-jS-TvD" firstAttribute="leading" secondItem="v4P-s8-M84" secondAttribute="trailing" constant="15" id="k2o-LQ-NaY"/>
                             <constraint firstItem="gyG-5V-fHr" firstAttribute="centerX" secondItem="Ohn-9s-xpo" secondAttribute="centerX" id="kGD-0V-1j6"/>
                             <constraint firstItem="CZh-xd-wKK" firstAttribute="baseline" secondItem="KUX-jS-TvD" secondAttribute="baseline" id="kp1-hh-byv"/>
                             <constraint firstItem="CZh-xd-wKK" firstAttribute="leading" secondItem="12F-1C-cg4" secondAttribute="leading" id="lLp-EB-bN2"/>
                             <constraint firstItem="v4P-s8-M84" firstAttribute="leading" secondItem="b88-ye-cYh" secondAttribute="trailing" constant="15" id="m0B-Fd-ZeO"/>
                             <constraint firstItem="lMM-0V-H80" firstAttribute="centerY" secondItem="8g2-QY-zt1" secondAttribute="centerY" id="mNL-JP-eVM"/>
                             <constraint firstItem="xBI-04-O5G" firstAttribute="centerY" secondItem="Ohn-9s-xpo" secondAttribute="centerY" id="n3E-5Y-Cuh"/>
-                            <constraint firstItem="v4P-s8-M84" firstAttribute="leading" secondItem="b88-ye-cYh" secondAttribute="trailing" constant="15" id="o13-hu-6e9"/>
                             <constraint firstItem="8g2-QY-zt1" firstAttribute="leading" secondItem="cDl-2l-9Pb" secondAttribute="leading" constant="20" id="qAW-uQ-0Oy"/>
                             <constraint firstItem="gyG-5V-fHr" firstAttribute="centerY" secondItem="Hue-Gg-wca" secondAttribute="centerY" id="qT4-pw-4XR"/>
                             <constraint firstItem="xBI-04-O5G" firstAttribute="leading" secondItem="zAs-tw-LgJ" secondAttribute="trailing" constant="7" id="rEa-G5-b7h"/>
@@ -201,8 +200,8 @@
                     <connections>
                         <outlet property="alarmSoundChoices" destination="kTt-Mc-Rkq" id="Bde-N0-IfS"/>
                         <outlet property="searchDisplayController" destination="CjV-en-sqN" id="ITS-G4-tAc"/>
-                        <outlet property="snoozeValue" destination="b88-ye-cYh" id="SXL-lM-KLq"/>
                         <outlet property="stepper" destination="v4P-s8-M84" id="ohl-Of-sID"/>
+                        <outlet property="stepperValue" destination="b88-ye-cYh" id="5iM-eZ-g0K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LT6-4K-Jop" userLabel="First Responder" sceneMemberID="firstResponder"/>
