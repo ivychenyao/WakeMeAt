@@ -38,22 +38,19 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         mapView.addAnnotation(pin)
     }
-    
-    
 
-    // Had to make private
-    private func locationManager(_ manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    // Have to override
+    func locationManager(_ manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        // Zooms in on current location
         let location = locations.last as! CLLocation
-        
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
         self.mapView.setRegion(region, animated: true)
         
-        // print(locations)
+        dropPin(location: location) // Drop red pin on current location (CHANGE TO DESTINATION)
         
-        // dropPin(location: locations[locations.count - 1] as! CLLocation)
-        
+        //self.mapView.showsUserLocation = true
     
     }
 
