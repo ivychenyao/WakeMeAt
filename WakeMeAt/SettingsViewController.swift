@@ -29,6 +29,18 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var policeSirenPlayer = AVAudioPlayer()
     var policeSirenURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Siren-SoundBible.com-1094437108", ofType: "mp3")!)
     
+    var doorbellPlayer = AVAudioPlayer()
+    var doorbellURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Two Tone Doorbell-SoundBible.com-1238551671", ofType: "mp3")!)
+    
+    var ambulancePlayer = AVAudioPlayer()
+    var ambulanceURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Fire Truck Siren-SoundBible.com-642727443", ofType: "mp3")!)
+    
+    var hornHonkPlayer = AVAudioPlayer()
+    var hornHonkURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Traffic_Jam-Yo_Mama-1164700013-3", ofType: "mp3")!)
+    
+    var fireAlarmPlayer = AVAudioPlayer()
+    var fireAlarmURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "gentex_cammander_3_code_3_horn-Brandon-938131891", ofType: "mp3")!)
+    
     var alarmSoundChoicesData: [String] = [String]()
     
     var alarmSound = AVAudioPlayer()
@@ -37,6 +49,13 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Loads alarm sound choices
+        do {
+            phoneRingingPlayer = try AVAudioPlayer(contentsOf: phoneRingingURL as URL)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
         do {
             policeSirenPlayer = try AVAudioPlayer(contentsOf: policeSirenURL as URL)
         } catch let error {
@@ -44,7 +63,25 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         
         do {
-            phoneRingingPlayer = try AVAudioPlayer(contentsOf: phoneRingingURL as URL)
+            doorbellPlayer = try AVAudioPlayer(contentsOf: doorbellURL as URL)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        do {
+            ambulancePlayer = try AVAudioPlayer(contentsOf: ambulanceURL as URL)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        do {
+            hornHonkPlayer = try AVAudioPlayer(contentsOf: hornHonkURL as URL)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        do {
+            fireAlarmPlayer = try AVAudioPlayer(contentsOf: fireAlarmURL as URL)
         } catch let error {
             print(error.localizedDescription)
         }
@@ -67,6 +104,10 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.stepperValue.text = "\(stepperVal)"
     }
     
+    @IBAction func beginEditRadius(_ sender: UITextField) {
+        stopSound()
+    }
+    
     // TODO: Change so that phone vibrates increasingly with slider, not just vibrates once
     @IBAction func setVibration(_ sender: UISlider) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -74,6 +115,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     // Change stepper label every time stepper is clicked
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        stopSound()
         let stepperVal:Int = lround(self.stepper.value)
         self.stepperValue.text = "\(stepperVal)"
     }
@@ -87,9 +129,18 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     
-    func playChosenSound(chosenSound: AVAudioPlayer) {
-        chosenSound.numberOfLoops = -1 // Plays sound in never ending loop
+    func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {
+        chosenSound.numberOfLoops = numLoops // -1 Plays sound in never ending loop
         chosenSound.play()
+    }
+    
+    func stopSound() {
+        phoneRingingPlayer.stop()
+        policeSirenPlayer.stop()
+        doorbellPlayer.stop()
+        ambulancePlayer.stop()
+        hornHonkPlayer.stop()
+        fireAlarmPlayer.stop()
     }
     
     // Number of columns of data in alarm sound picker
@@ -108,16 +159,36 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
         if row == 0 {
             alarmSound = phoneRingingPlayer
-            
         }
         
         else if row == 1 {
             alarmSound = policeSirenPlayer
         }
         
-        playChosenSound(chosenSound: alarmSound)
+        else if row == 2 {
+            alarmSound = doorbellPlayer
+        }
+        
+        else if row == 3 {
+            alarmSound = ambulancePlayer
+        }
+        
+        else if row == 4 {
+            alarmSound = hornHonkPlayer
+        }
+            
+        else if row == 5 {
+            alarmSound = fireAlarmPlayer
+        }
+        
+        stopSound()
+        
+        if row != 6 {
+            playChosenSound(chosenSound: alarmSound, numLoops: 0)
+        }
     }
     
     
