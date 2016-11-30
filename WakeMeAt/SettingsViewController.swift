@@ -18,26 +18,27 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var vibrationSlider: UISlider!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var stepperValue: UILabel!
+    
     var radiusValue = 5.0
     
     // Alarm sound choices and path URLs
-    var phoneRingingPlayer = AVAudioPlayer()
-    var phoneRingingURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Home Phone Ringing-SoundBible.com-476855293", ofType: "mp3")!)
+    var alarmBuzzerPlayer = AVAudioPlayer()
+    var alarmBuzzerURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Alarm Buzzer", ofType: "mp3")!)
     
     var policeSirenPlayer = AVAudioPlayer()
-    var policeSirenURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Siren-SoundBible.com-1094437108", ofType: "mp3")!)
+    var policeSirenURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Police Siren", ofType: "mp3")!)
     
     var doorbellPlayer = AVAudioPlayer()
-    var doorbellURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Two Tone Doorbell-SoundBible.com-1238551671", ofType: "mp3")!)
+    var doorbellURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Doorbell", ofType: "mp3")!)
     
     var ambulancePlayer = AVAudioPlayer()
-    var ambulanceURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Fire Truck Siren-SoundBible.com-642727443", ofType: "mp3")!)
+    var ambulanceURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Ambulance", ofType: "mp3")!)
     
     var hornHonkPlayer = AVAudioPlayer()
-    var hornHonkURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Traffic_Jam-Yo_Mama-1164700013-3", ofType: "mp3")!)
+    var hornHonkURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Horn Honk", ofType: "mp3")!)
     
     var fireAlarmPlayer = AVAudioPlayer()
-    var fireAlarmURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "gentex_cammander_3_code_3_horn-Brandon-938131891", ofType: "mp3")!)
+    var fireAlarmURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Fire Alarm", ofType: "mp3")!)
     
     var alarmSoundChoicesData: [String] = [String]()
     var alarmSound = AVAudioPlayer()
@@ -49,7 +50,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         // Loads alarm sound choices
         do {
-            phoneRingingPlayer = try AVAudioPlayer(contentsOf: phoneRingingURL as URL)
+            alarmBuzzerPlayer = try AVAudioPlayer(contentsOf: alarmBuzzerURL as URL)
         } catch let error {
             print(error.localizedDescription)
         }
@@ -84,12 +85,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             print(error.localizedDescription)
         }
         
-        self.alarmSound = phoneRingingPlayer
+        self.alarmSound = alarmBuzzerPlayer
         self.alarmSoundChoices.delegate = self
         self.alarmSoundChoices.dataSource = self
         
         // Input data into alarm sound choices data array
-        alarmSoundChoicesData = ["Phone Ringing","Police Siren","Doorbell","Ambulance","Horn Honk","Fire Alarm","None"]
+        alarmSoundChoicesData = ["Alarm Buzzer","Police Siren","Doorbell","Ambulance","Horn Honk","Fire Alarm","None"]
       
         // Stepper properties
         stepper.autorepeat = true
@@ -137,7 +138,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.stepperValue.text = "\(stepperVal)"
     }
     
-    // TODO: Set actual variables to grab data
     @IBAction func resetClicked(_ sender: UIButton) {
         stopSound()
         
@@ -145,7 +145,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         radiusValue = 5.0
         alarmSoundChoices.reloadAllComponents()
         alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
-        alarmSound = phoneRingingPlayer
+        alarmSound = alarmBuzzerPlayer
         volumeSlider.value = 0.5
         vibrationSlider.value = 0.5
         stepperValue.text = "5"
@@ -163,7 +163,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func stopSound() {
-        phoneRingingPlayer.stop()
+        alarmBuzzerPlayer.stop()
         policeSirenPlayer.stop()
         doorbellPlayer.stop()
         ambulancePlayer.stop()
@@ -188,7 +188,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row == 0 {
-            alarmSound = phoneRingingPlayer
+            alarmSound = alarmBuzzerPlayer
         }
         
         else if row == 1 {

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11A56FD1DEF0E88004D2513 /* Alarm Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A56FC1DEF0E88004D2513 /* Alarm Buzzer.mp3 */; };
+		F11A56FF1DEF0ECB004D2513 /* Police Siren.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A56FE1DEF0ECB004D2513 /* Police Siren.mp3 */; };
+		F11A57011DEF0F23004D2513 /* Doorbell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A57001DEF0F23004D2513 /* Doorbell.mp3 */; };
+		F11A57031DEF0F61004D2513 /* Fire Alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A57021DEF0F61004D2513 /* Fire Alarm.mp3 */; };
+		F11A57051DEF0F95004D2513 /* Ambulance.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A57041DEF0F95004D2513 /* Ambulance.mp3 */; };
+		F11A57071DEF100A004D2513 /* Horn Honk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A57061DEF100A004D2513 /* Horn Honk.mp3 */; };
 		F129F29C1DB83F71001B3C8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F129F29B1DB83F71001B3C8A /* AppDelegate.swift */; };
 		F129F29E1DB83F71001B3C8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F129F29D1DB83F71001B3C8A /* ViewController.swift */; };
 		F129F2A11DB83F71001B3C8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F129F29F1DB83F71001B3C8A /* Main.storyboard */; };
@@ -16,14 +22,8 @@
 		F129F2B41DB83F71001B3C8A /* WakeMeAtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F129F2B31DB83F71001B3C8A /* WakeMeAtTests.swift */; };
 		F1A14CD81DDE5BE800262503 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A14CD71DDE5BE800262503 /* MainViewController.swift */; };
 		F1A14CDA1DDE692000262503 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A14CD91DDE692000262503 /* SettingsViewController.swift */; };
-		F1A14CDE1DEE124500262503 /* Siren-SoundBible.com-1094437108.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1A14CDD1DEE124500262503 /* Siren-SoundBible.com-1094437108.mp3 */; };
 		F1A14CE11DEE175900262503 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A14CE01DEE175900262503 /* AVFoundation.framework */; };
 		F1A14CE31DEE1ABA00262503 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */; };
-		F1A14CE51DEE586E00262503 /* Home Phone Ringing-SoundBible.com-476855293.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1A14CE41DEE586E00262503 /* Home Phone Ringing-SoundBible.com-476855293.mp3 */; };
-		F1A14CE71DEE5E8B00262503 /* Two Tone Doorbell-SoundBible.com-1238551671.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1A14CE61DEE5E8B00262503 /* Two Tone Doorbell-SoundBible.com-1238551671.mp3 */; };
-		F1A14CE91DEE5EDE00262503 /* Fire Truck Siren-SoundBible.com-642727443.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1A14CE81DEE5EDE00262503 /* Fire Truck Siren-SoundBible.com-642727443.mp3 */; };
-		F1A14CEB1DEE5F5200262503 /* Traffic_Jam-Yo_Mama-1164700013-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1A14CEA1DEE5F5200262503 /* Traffic_Jam-Yo_Mama-1164700013-3.mp3 */; };
-		F1A14CED1DEE5FA200262503 /* gentex_cammander_3_code_3_horn-Brandon-938131891.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1A14CEC1DEE5FA200262503 /* gentex_cammander_3_code_3_horn-Brandon-938131891.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F11A56FC1DEF0E88004D2513 /* Alarm Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Alarm Buzzer.mp3"; path = "../../../../Downloads/Alarm Buzzer.mp3"; sourceTree = "<group>"; };
+		F11A56FE1DEF0ECB004D2513 /* Police Siren.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Police Siren.mp3"; path = "../../../../Downloads/Police Siren.mp3"; sourceTree = "<group>"; };
+		F11A57001DEF0F23004D2513 /* Doorbell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Doorbell.mp3; path = ../../../../Downloads/Doorbell.mp3; sourceTree = "<group>"; };
+		F11A57021DEF0F61004D2513 /* Fire Alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Fire Alarm.mp3"; path = "../../../../Downloads/Fire Alarm.mp3"; sourceTree = "<group>"; };
+		F11A57041DEF0F95004D2513 /* Ambulance.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Ambulance.mp3; path = ../../../../Downloads/Ambulance.mp3; sourceTree = "<group>"; };
+		F11A57061DEF100A004D2513 /* Horn Honk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Horn Honk.mp3"; path = "../../../../Downloads/Horn Honk.mp3"; sourceTree = "<group>"; };
 		F129F2981DB83F71001B3C8A /* WakeMeAt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WakeMeAt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F129F29B1DB83F71001B3C8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F129F29D1DB83F71001B3C8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,14 +56,8 @@
 		F129F2B51DB83F71001B3C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1A14CD71DDE5BE800262503 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F1A14CD91DDE692000262503 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		F1A14CDD1DEE124500262503 /* Siren-SoundBible.com-1094437108.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Siren-SoundBible.com-1094437108.mp3"; sourceTree = "<group>"; };
 		F1A14CE01DEE175900262503 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		F1A14CE41DEE586E00262503 /* Home Phone Ringing-SoundBible.com-476855293.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Home Phone Ringing-SoundBible.com-476855293.mp3"; path = "../../../../Downloads/Home Phone Ringing-SoundBible.com-476855293.mp3"; sourceTree = "<group>"; };
-		F1A14CE61DEE5E8B00262503 /* Two Tone Doorbell-SoundBible.com-1238551671.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Two Tone Doorbell-SoundBible.com-1238551671.mp3"; path = "../../../../Downloads/Two Tone Doorbell-SoundBible.com-1238551671.mp3"; sourceTree = "<group>"; };
-		F1A14CE81DEE5EDE00262503 /* Fire Truck Siren-SoundBible.com-642727443.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Fire Truck Siren-SoundBible.com-642727443.mp3"; path = "../../../../Downloads/Fire Truck Siren-SoundBible.com-642727443.mp3"; sourceTree = "<group>"; };
-		F1A14CEA1DEE5F5200262503 /* Traffic_Jam-Yo_Mama-1164700013-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Traffic_Jam-Yo_Mama-1164700013-3.mp3"; path = "../../../../Downloads/Traffic_Jam-Yo_Mama-1164700013-3.mp3"; sourceTree = "<group>"; };
-		F1A14CEC1DEE5FA200262503 /* gentex_cammander_3_code_3_horn-Brandon-938131891.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "gentex_cammander_3_code_3_horn-Brandon-938131891.mp3"; path = "../../../../Downloads/gentex_cammander_3_code_3_horn-Brandon-938131891.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,12 +128,12 @@
 		F1A14CDC1DEE123900262503 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F1A14CE41DEE586E00262503 /* Home Phone Ringing-SoundBible.com-476855293.mp3 */,
-				F1A14CE61DEE5E8B00262503 /* Two Tone Doorbell-SoundBible.com-1238551671.mp3 */,
-				F1A14CEC1DEE5FA200262503 /* gentex_cammander_3_code_3_horn-Brandon-938131891.mp3 */,
-				F1A14CEA1DEE5F5200262503 /* Traffic_Jam-Yo_Mama-1164700013-3.mp3 */,
-				F1A14CE81DEE5EDE00262503 /* Fire Truck Siren-SoundBible.com-642727443.mp3 */,
-				F1A14CDD1DEE124500262503 /* Siren-SoundBible.com-1094437108.mp3 */,
+				F11A56FC1DEF0E88004D2513 /* Alarm Buzzer.mp3 */,
+				F11A56FE1DEF0ECB004D2513 /* Police Siren.mp3 */,
+				F11A57001DEF0F23004D2513 /* Doorbell.mp3 */,
+				F11A57041DEF0F95004D2513 /* Ambulance.mp3 */,
+				F11A57061DEF100A004D2513 /* Horn Honk.mp3 */,
+				F11A57021DEF0F61004D2513 /* Fire Alarm.mp3 */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -230,15 +230,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F11A57071DEF100A004D2513 /* Horn Honk.mp3 in Resources */,
 				F129F2A91DB83F71001B3C8A /* LaunchScreen.storyboard in Resources */,
-				F1A14CDE1DEE124500262503 /* Siren-SoundBible.com-1094437108.mp3 in Resources */,
+				F11A57051DEF0F95004D2513 /* Ambulance.mp3 in Resources */,
+				F11A57031DEF0F61004D2513 /* Fire Alarm.mp3 in Resources */,
+				F11A57011DEF0F23004D2513 /* Doorbell.mp3 in Resources */,
+				F11A56FF1DEF0ECB004D2513 /* Police Siren.mp3 in Resources */,
 				F129F2A61DB83F71001B3C8A /* Assets.xcassets in Resources */,
-				F1A14CED1DEE5FA200262503 /* gentex_cammander_3_code_3_horn-Brandon-938131891.mp3 in Resources */,
-				F1A14CE71DEE5E8B00262503 /* Two Tone Doorbell-SoundBible.com-1238551671.mp3 in Resources */,
-				F1A14CEB1DEE5F5200262503 /* Traffic_Jam-Yo_Mama-1164700013-3.mp3 in Resources */,
-				F1A14CE91DEE5EDE00262503 /* Fire Truck Siren-SoundBible.com-642727443.mp3 in Resources */,
+				F11A56FD1DEF0E88004D2513 /* Alarm Buzzer.mp3 in Resources */,
 				F129F2A11DB83F71001B3C8A /* Main.storyboard in Resources */,
-				F1A14CE51DEE586E00262503 /* Home Phone Ringing-SoundBible.com-476855293.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
