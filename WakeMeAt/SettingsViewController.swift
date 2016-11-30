@@ -12,15 +12,13 @@ import MediaPlayer
 import AVFoundation // Has the code to allow us to use iPhone's speakers
 
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
-    @IBOutlet weak var volumeSlider: UISlider!
     
-    // Snooze stepper
+    @IBOutlet weak var alarmSoundChoices: UIPickerView!
+    @IBOutlet weak var radius: UITextField!
+    @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var vibrationSlider: UISlider!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var stepperValue: UILabel!
-
-    // Alarm sound choices picker
-    @IBOutlet weak var alarmSoundChoices: UIPickerView!
     
     // Alarm sound choices and path URLs
     var phoneRingingPlayer = AVAudioPlayer()
@@ -42,12 +40,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var fireAlarmURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "gentex_cammander_3_code_3_horn-Brandon-938131891", ofType: "mp3")!)
     
     var alarmSoundChoicesData: [String] = [String]()
-    
     var alarmSound = AVAudioPlayer()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Settings"
         
         // Loads alarm sound choices
         do {
@@ -87,7 +85,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         
         self.alarmSound = phoneRingingPlayer
-        self.title = "Settings"
         self.alarmSoundChoices.delegate = self
         self.alarmSoundChoices.dataSource = self
         
@@ -108,6 +105,10 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         stopSound()
     }
     
+    @IBAction func slideVolume(_ sender: UISlider) {
+        alarmSound.volume = volumeSlider.value
+    }
+    
     // TODO: Change so that phone vibrates increasingly with slider, not just vibrates once
     @IBAction func setVibration(_ sender: UISlider) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -120,19 +121,32 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.stepperValue.text = "\(stepperVal)"
     }
     
-    @IBAction func slideVolume(_ sender: UISlider) {
-        alarmSound.volume = volumeSlider.value
+    
+    // TODO: Set actual variables to grab data
+    @IBAction func resetClicked(_ sender: UIButton) {
+        stopSound()
+        
+        stepper.value = 5
+        
+        radius.text = "5.0"
+        alarmSoundChoices.reloadAllComponents()
+        alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
+        volumeSlider.value = 0.5
+        vibrationSlider.value = 0.5
+        stepperValue.text = "5"
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     
     func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {
         chosenSound.numberOfLoops = numLoops // -1 Plays sound in never ending loop
         chosenSound.play()
     }
+    
     
     func stopSound() {
         phoneRingingPlayer.stop()
@@ -143,20 +157,24 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         fireAlarmPlayer.stop()
     }
     
+    
     // Number of columns of data in alarm sound picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     
     // Number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return alarmSoundChoicesData.count
     }
     
+    
     // Data to return for row and component (column) that is being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return alarmSoundChoicesData[row]
     }
+    
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
@@ -190,7 +208,4 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             playChosenSound(chosenSound: alarmSound, numLoops: 0)
         }
     }
-    
-    
-    
 }

@@ -144,6 +144,9 @@
                                 <state key="normal" title="Reset">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetClicked:" destination="oWf-QR-BvI" eventType="touchUpInside" id="20K-Ly-wFy"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTt-Mc-Rkq">
                                 <rect key="frame" x="187" y="118" width="172" height="165"/>
@@ -208,9 +211,11 @@
                     </view>
                     <connections>
                         <outlet property="alarmSoundChoices" destination="kTt-Mc-Rkq" id="Bde-N0-IfS"/>
+                        <outlet property="radius" destination="lMM-0V-H80" id="Mss-eV-iLH"/>
                         <outlet property="searchDisplayController" destination="CjV-en-sqN" id="ITS-G4-tAc"/>
                         <outlet property="stepper" destination="v4P-s8-M84" id="ohl-Of-sID"/>
                         <outlet property="stepperValue" destination="b88-ye-cYh" id="5iM-eZ-g0K"/>
+                        <outlet property="vibrationSlider" destination="Hue-Gg-wca" id="QZW-TW-625"/>
                         <outlet property="volumeSlider" destination="zAs-tw-LgJ" id="APL-uI-oJg"/>
                     </connections>
                 </viewController>
