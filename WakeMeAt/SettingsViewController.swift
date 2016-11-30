@@ -12,10 +12,6 @@ import MediaPlayer
 import AVFoundation // Has the code to allow us to use iPhone's speakers
 
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    var policeSirenURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Siren-SoundBible.com-1094437108", ofType: "mp3")!)
-    
-    var policeSirenPlayer = AVAudioPlayer()
 
     @IBOutlet weak var volumeSlider: UISlider!
     
@@ -26,7 +22,17 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     // Alarm sound choices picker
     @IBOutlet weak var alarmSoundChoices: UIPickerView!
     
+    // Alarm sound choices and path URLs
+    var phoneRingingPlayer = AVAudioPlayer()
+    var phoneRingingURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Home Phone Ringing-SoundBible.com-476855293", ofType: "mp3")!)
+    
+    var policeSirenPlayer = AVAudioPlayer()
+    var policeSirenURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Siren-SoundBible.com-1094437108", ofType: "mp3")!)
+    
     var alarmSoundChoicesData: [String] = [String]()
+    
+    var alarmSound = AVAudioPlayer()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,21 +42,22 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         } catch let error {
             print(error.localizedDescription)
         }
-
         
+        do {
+            phoneRingingPlayer = try AVAudioPlayer(contentsOf: phoneRingingURL as URL)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        self.alarmSound = phoneRingingPlayer
         self.title = "Settings"
-
-        // Do any additional setup after loading the view.
-        
         self.alarmSoundChoices.delegate = self
         self.alarmSoundChoices.dataSource = self
         
         // Input data into alarm sound choices data array
-        alarmSoundChoicesData = ["Phone Ringing","Police Siren","Doorbell","Ambulance","Horn Honk",
-                                 "Fire Alarm","None"]
-        
+        alarmSoundChoicesData = ["Phone Ringing","Police Siren","Doorbell","Ambulance","Horn Honk","Fire Alarm","None"]
+      
         // Stepper properties
-        //stepper.value = 5
         stepper.autorepeat = true
         stepper.maximumValue = 15
         stepper.minimumValue = 1
@@ -71,27 +78,19 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.stepperValue.text = "\(stepperVal)"
     }
     
+    @IBAction func slideVolume(_ sender: UISlider) {
+        alarmSound.volume = volumeSlider.value
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func slideVolume(_ sender: UISlider) {
-        policeSirenPlayer.numberOfLoops = -1 // Plays sound in never ending loop
-        policeSirenPlayer.play()
-        
-        policeSirenPlayer.volume = volumeSlider.value
-        
-        //let wrapperView = UIView(frame: CGRect(x: 30, y: 200, width: 260, height: 20))
-        //self.view.backgroundColor = UIColor.clear
-        //self.view.addSubview(wrapperView)
-        
-        //let volumeView = MPVolumeView(frame: wrapperView.bounds)
-        //wrapperView.addSubview(volumeView)
-        
-    }
     
+    func playChosenSound(chosenSound: AVAudioPlayer) {
+        chosenSound.numberOfLoops = -1 // Plays sound in never ending loop
+        chosenSound.play()
+    }
     
     // Number of columns of data in alarm sound picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -107,15 +106,20 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return alarmSoundChoicesData[row]
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row == 0 {
+            alarmSound = phoneRingingPlayer
+            
+        }
+        
+        else if row == 1 {
+            alarmSound = policeSirenPlayer
+        }
+        
+        playChosenSound(chosenSound: alarmSound)
     }
-    */
-
+    
+    
+    
 }
