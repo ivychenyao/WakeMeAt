@@ -91,6 +91,9 @@
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zAs-tw-LgJ">
                                 <rect key="frame" x="57" y="332" width="257" height="31"/>
+                                <connections>
+                                    <action selector="slideVolume:" destination="oWf-QR-BvI" eventType="valueChanged" id="NDT-Ld-1Ea"/>
+                                </connections>
                             </slider>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoSound" translatesAutoresizingMaskIntoConstraints="NO" id="Ohn-9s-xpo">
                                 <rect key="frame" x="20" y="331" width="32" height="32"/>
@@ -101,6 +104,9 @@
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hue-Gg-wca">
                                 <rect key="frame" x="57" y="423" width="257" height="31"/>
+                                <connections>
+                                    <action selector="setVibration:" destination="oWf-QR-BvI" eventType="valueChanged" id="V6X-gX-h5n"/>
+                                </connections>
                             </slider>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoVibration" translatesAutoresizingMaskIntoConstraints="NO" id="gyG-5V-fHr">
                                 <rect key="frame" x="31" y="433" width="10" height="10"/>
@@ -202,6 +208,7 @@
                         <outlet property="searchDisplayController" destination="CjV-en-sqN" id="ITS-G4-tAc"/>
                         <outlet property="stepper" destination="v4P-s8-M84" id="ohl-Of-sID"/>
                         <outlet property="stepperValue" destination="b88-ye-cYh" id="5iM-eZ-g0K"/>
+                        <outlet property="volumeSlider" destination="zAs-tw-LgJ" id="APL-uI-oJg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LT6-4K-Jop" userLabel="First Responder" sceneMemberID="firstResponder"/>

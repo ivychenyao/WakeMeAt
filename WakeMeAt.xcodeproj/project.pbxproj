@@ -16,6 +16,9 @@
 		F129F2B41DB83F71001B3C8A /* WakeMeAtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F129F2B31DB83F71001B3C8A /* WakeMeAtTests.swift */; };
 		F1A14CD81DDE5BE800262503 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A14CD71DDE5BE800262503 /* MainViewController.swift */; };
 		F1A14CDA1DDE692000262503 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A14CD91DDE692000262503 /* SettingsViewController.swift */; };
+		F1A14CDE1DEE124500262503 /* Siren-SoundBible.com-1094437108.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1A14CDD1DEE124500262503 /* Siren-SoundBible.com-1094437108.mp3 */; };
+		F1A14CE11DEE175900262503 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A14CE01DEE175900262503 /* AVFoundation.framework */; };
+		F1A14CE31DEE1ABA00262503 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		F129F2B51DB83F71001B3C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1A14CD71DDE5BE800262503 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F1A14CD91DDE692000262503 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F1A14CDD1DEE124500262503 /* Siren-SoundBible.com-1094437108.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Siren-SoundBible.com-1094437108.mp3"; sourceTree = "<group>"; };
+		F1A14CE01DEE175900262503 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A14CE31DEE1ABA00262503 /* MediaPlayer.framework in Frameworks */,
+				F1A14CE11DEE175900262503 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +76,7 @@
 				F129F29A1DB83F71001B3C8A /* WakeMeAt */,
 				F129F2B21DB83F71001B3C8A /* WakeMeAtTests */,
 				F129F2991DB83F71001B3C8A /* Products */,
+				F1A14CDF1DEE175900262503 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +92,7 @@
 		F129F29A1DB83F71001B3C8A /* WakeMeAt */ = {
 			isa = PBXGroup;
 			children = (
+				F1A14CDC1DEE123900262503 /* Supporting Files */,
 				F129F29B1DB83F71001B3C8A /* AppDelegate.swift */,
 				F129F29D1DB83F71001B3C8A /* ViewController.swift */,
 				F129F29F1DB83F71001B3C8A /* Main.storyboard */,
@@ -103,6 +113,23 @@
 				F129F2B51DB83F71001B3C8A /* Info.plist */,
 			);
 			path = WakeMeAtTests;
+			sourceTree = "<group>";
+		};
+		F1A14CDC1DEE123900262503 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1A14CDD1DEE124500262503 /* Siren-SoundBible.com-1094437108.mp3 */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1A14CDF1DEE175900262503 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */,
+				F1A14CE01DEE175900262503 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F129F2A91DB83F71001B3C8A /* LaunchScreen.storyboard in Resources */,
+				F1A14CDE1DEE124500262503 /* Siren-SoundBible.com-1094437108.mp3 in Resources */,
 				F129F2A61DB83F71001B3C8A /* Assets.xcassets in Resources */,
 				F129F2A11DB83F71001B3C8A /* Main.storyboard in Resources */,
 			);
