@@ -12,13 +12,13 @@ import MediaPlayer
 import AVFoundation // Has the code to allow us to use iPhone's speakers
 
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
     @IBOutlet weak var alarmSoundChoices: UIPickerView!
     @IBOutlet weak var radius: UITextField!
     @IBOutlet weak var volumeSlider: UISlider!
     @IBOutlet weak var vibrationSlider: UISlider!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var stepperValue: UILabel!
+    var radiusValue = 5.0
     
     // Alarm sound choices and path URLs
     var phoneRingingPlayer = AVAudioPlayer()
@@ -96,13 +96,29 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         stepper.maximumValue = 15
         stepper.minimumValue = 1
         
-        // Makes snooze value integer, not double
+        // Makes snooze value an integer, not double
         let stepperVal:Int = lround(self.stepper.value)
         self.stepperValue.text = "\(stepperVal)"
     }
     
     @IBAction func beginEditRadius(_ sender: UITextField) {
         stopSound()
+    }
+    
+    @IBAction func changeRadius(_ sender: UITextField) {
+        var radiusStrToDouble: Double
+        
+        // If user enters an invalid radius or deletes everything in textfield, textfield is erased and radius value set to 0
+        if Double(sender.text!) == nil {
+            sender.text = nil
+            radiusStrToDouble = 0
+        }
+        
+        else {
+            radiusStrToDouble = Double(sender.text!)!
+        }
+        
+        radiusValue = radiusStrToDouble
     }
     
     @IBAction func slideVolume(_ sender: UISlider) {
@@ -121,32 +137,30 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.stepperValue.text = "\(stepperVal)"
     }
     
-    
     // TODO: Set actual variables to grab data
     @IBAction func resetClicked(_ sender: UIButton) {
         stopSound()
         
-        stepper.value = 5
-        
         radius.text = "5.0"
+        radiusValue = 5.0
         alarmSoundChoices.reloadAllComponents()
         alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
+        alarmSound = phoneRingingPlayer
         volumeSlider.value = 0.5
         vibrationSlider.value = 0.5
         stepperValue.text = "5"
+        stepper.value = 5
     }
 
-    
+    // Do I need this?
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    
     func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {
         chosenSound.numberOfLoops = numLoops // -1 Plays sound in never ending loop
         chosenSound.play()
     }
-    
     
     func stopSound() {
         phoneRingingPlayer.stop()
@@ -157,27 +171,22 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         fireAlarmPlayer.stop()
     }
     
-    
     // Number of columns of data in alarm sound picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
     
     // Number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return alarmSoundChoicesData.count
     }
     
-    
     // Data to return for row and component (column) that is being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return alarmSoundChoicesData[row]
     }
     
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
         if row == 0 {
             alarmSound = phoneRingingPlayer
         }
