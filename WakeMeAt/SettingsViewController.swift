@@ -6,6 +6,8 @@
 //  Copyright © 2016 Ivy Chenyao. All rights reserved.
 //
 
+// TODO: Make sure other View Controller still running when user is in Settings
+
 import UIKit
 import AudioToolbox
 import MediaPlayer
@@ -51,35 +53,10 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Loads alarm sound choices
         do {
             alarmBuzzerPlayer = try AVAudioPlayer(contentsOf: alarmBuzzerURL as URL)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        do {
             policeSirenPlayer = try AVAudioPlayer(contentsOf: policeSirenURL as URL)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        do {
             doorbellPlayer = try AVAudioPlayer(contentsOf: doorbellURL as URL)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        do {
             ambulancePlayer = try AVAudioPlayer(contentsOf: ambulanceURL as URL)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        do {
             hornHonkPlayer = try AVAudioPlayer(contentsOf: hornHonkURL as URL)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        do {
             fireAlarmPlayer = try AVAudioPlayer(contentsOf: fireAlarmURL as URL)
         } catch let error {
             print(error.localizedDescription)
@@ -123,7 +100,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func slideVolume(_ sender: UISlider) {
+       // volumeSlider.value = 0
         alarmSound.volume = volumeSlider.value
+        
     }
     
     // TODO: Change so that phone vibrates increasingly with slider, not just vibrates once
@@ -156,7 +135,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {
         chosenSound.numberOfLoops = numLoops // -1 Plays sound in never ending loop
         chosenSound.play()

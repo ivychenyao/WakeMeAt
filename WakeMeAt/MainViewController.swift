@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import MediaPlayer
 
 class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
@@ -16,6 +17,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var myPin: MKPinAnnotationView!
     var settingsViewController = SettingsViewController()
     var radius: Double!
+    var alarm = AVAudioPlayer()
+    var volume: Float!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +32,20 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         self.mapView.delegate = self
         
+        do {
+            settingsViewController.alarmBuzzerPlayer = try AVAudioPlayer(contentsOf: settingsViewController.alarmBuzzerURL as URL)
+            settingsViewController.policeSirenPlayer = try AVAudioPlayer(contentsOf: settingsViewController.policeSirenURL as URL)
+            settingsViewController.doorbellPlayer = try AVAudioPlayer(contentsOf: settingsViewController.doorbellURL as URL)
+            settingsViewController.ambulancePlayer = try AVAudioPlayer(contentsOf: settingsViewController.ambulanceURL as URL)
+            settingsViewController.hornHonkPlayer = try AVAudioPlayer(contentsOf: settingsViewController.hornHonkURL as URL)
+            settingsViewController.fireAlarmPlayer = try AVAudioPlayer(contentsOf: settingsViewController.fireAlarmURL as URL)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
         radius = settingsViewController.radiusValue
+        alarm = settingsViewController.alarmSound
+       // volume = settingsViewController.alarmSound.volume
     }
     
     
@@ -57,8 +73,16 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             
             if Double(distance) <= Double(radius) {
                 print("Alarm goes off")
+                playAlarm()
+               
             }
         }
+    }
+    
+    func playAlarm() {
+        // DOESN'T WORK
+            settingsViewController.playChosenSound(chosenSound: alarm, numLoops: -1)
+        
     }
     
     // Have to override
