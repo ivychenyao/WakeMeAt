@@ -17,8 +17,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var alarmSoundChoices: UIPickerView!
     @IBOutlet weak var radius: UITextField!
     @IBOutlet weak var volumeSlider: UISlider!
-    @IBOutlet weak var vibrationSlider: UISlider!
-    @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var vibrationSlider: UISlider?
+    @IBOutlet weak var stepper: UIStepper?
     @IBOutlet weak var stepperValue: UILabel!
     
     var radiusValue = 5.0
@@ -43,8 +43,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var fireAlarmURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Fire Alarm", ofType: "mp3")!)
     
     var alarmSoundChoicesData: [String] = [String]()
-    var alarmSound = AVAudioPlayer()
-    
+    //var alarmSound = AVAudioPlayer()
+    var alarmSound: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,12 +70,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         alarmSoundChoicesData = ["Alarm Buzzer","Police Siren","Doorbell","Ambulance","Horn Honk","Fire Alarm","None"]
       
         // Stepper properties
-        stepper.autorepeat = true
-        stepper.maximumValue = 15
-        stepper.minimumValue = 1
+        stepper?.autorepeat = true
+        stepper?.maximumValue = 15
+        stepper?.minimumValue = 1
         
         // Makes snooze value an integer, not double
-        let stepperVal:Int = lround(self.stepper.value)
+        let stepperVal:Int = lround(self.stepper!.value)
         self.stepperValue.text = "\(stepperVal)"
     }
     
@@ -101,7 +101,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func slideVolume(_ sender: UISlider) {
        // volumeSlider.value = 0
-        alarmSound.volume = volumeSlider.value
+        alarmSound?.volume = volumeSlider.value
         
     }
     
@@ -113,7 +113,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     // Change stepper label every time stepper is clicked
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         stopSound()
-        let stepperVal:Int = lround(self.stepper.value)
+        let stepperVal:Int = lround(self.stepper!.value)
         self.stepperValue.text = "\(stepperVal)"
     }
     
@@ -126,9 +126,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
         alarmSound = alarmBuzzerPlayer
         volumeSlider.value = 0.5
-        vibrationSlider.value = 0.5
+        vibrationSlider?.value = 0.5
         stepperValue.text = "5"
-        stepper.value = 5
+        stepper?.value = 5
     }
 
     // Do I need this?
@@ -193,7 +193,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         stopSound()
         
         if row != 6 {
-            playChosenSound(chosenSound: alarmSound, numLoops: 0)
+            playChosenSound(chosenSound: alarmSound!, numLoops: 0)
         }
     }
+    
+    
 }

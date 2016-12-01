@@ -19,6 +19,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var radius: Double!
     var alarm = AVAudioPlayer()
     var volume: Float!
+    var vibration: Float!
     var snooze: Double!
     
     override func viewDidLoad() {
@@ -46,22 +47,35 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         radius = settingsViewController.radiusValue
         
-        alarm = settingsViewController.alarmSound
-        
-        alarm = settingsViewController.alarmBuzzerPlayer
-       // volume = settingsViewController.alarmSound.volume
-        
-        if snooze == nil {
-            snooze = 5.0
+        if let tryAlarm = settingsViewController.alarmSound {
+            alarm = tryAlarm
+        } else {
+            alarm = settingsViewController.alarmBuzzerPlayer
         }
         
-        else {
-            snooze = settingsViewController.stepper.value
+        if let tryVolume = settingsViewController.alarmSound?.volume {
+            volume = tryVolume
+        } else {
+            volume = 0.5
+        }
+        
+        // TODO: Could just call setVibration() in SettingsView instead to make phone vibrate when arrived?
+        if let tryVibration = settingsViewController.vibrationSlider?.value {
+            vibration = tryVibration
+        } else {
+            vibration = 0.5
+        }
+        
+        if let trySnooze = settingsViewController.stepper?.value {
+            snooze = trySnooze
+        } else {
+            snooze = 5.0
         }
     }
     
     
     func dropPin(location: CLLocation) {
+        mapView.removeAnnotations(mapView.annotations) // Deletes any previously dropped pins
         let coord: CLLocationCoordinate2D = location.coordinate
         let pin = MKPointAnnotation()
         pin.coordinate = coord
