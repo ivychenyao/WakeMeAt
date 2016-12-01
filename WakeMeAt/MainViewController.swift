@@ -19,6 +19,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var radius: Double!
     var alarm = AVAudioPlayer()
     var volume: Float!
+    var snooze: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +45,19 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         }
         
         radius = settingsViewController.radiusValue
+        
         alarm = settingsViewController.alarmSound
+        
+        alarm = settingsViewController.alarmBuzzerPlayer
        // volume = settingsViewController.alarmSound.volume
+        
+        if snooze == nil {
+            snooze = 5.0
+        }
+        
+        else {
+            snooze = settingsViewController.stepper.value
+        }
     }
     
     
@@ -81,8 +93,13 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     func playAlarm() {
         // DOESN'T WORK
-            settingsViewController.playChosenSound(chosenSound: alarm, numLoops: -1)
+        settingsViewController.playChosenSound(chosenSound: alarm, numLoops: -1)
         
+        // TODO: Make sure this only shows up once
+        let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(radius!) mi away from your destination", preferredStyle:.alert)
+        hereAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        hereAlert.addAction(UIAlertAction(title: "Snooze for \(snooze!) min", style: UIAlertActionStyle.default, handler: nil))
+        self.present(hereAlert, animated: true, completion: nil)
     }
     
     // Have to override
@@ -94,7 +111,10 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         self.mapView.setRegion(region, animated: true)
         
         // TODO: Drop red pin on user's pick of destination. Right now drops on user's current location
-        dropPin(location: location)
+        // dropPin(location: location)
+        
+        let NYLocation = CLLocation(latitude: 40.7128, longitude: 74.0059)
+        dropPin(location: NYLocation)
         
         //self.mapView.showsUserLocation = true
     
