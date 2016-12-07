@@ -46,6 +46,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //var alarmSound = AVAudioPlayer()
     var alarmSound: AVAudioPlayer?
     
+    let userDefaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Settings"
@@ -79,6 +81,29 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.stepperValue.text = "\(stepperVal)"
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        persistData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print("Lit")
+        /*
+        stopSound() // optional?
+        
+        print("\(userDefaults.double(forKey: "Radius"))")
+        radius.text = "\(userDefaults.double(forKey: "Radius"))"
+        alarmSoundChoices.reloadAllComponents()
+        // alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
+        // alarmSound = alarmBuzzerPlayer
+        volumeSlider.value = 0.5
+        vibrationSlider?.value = 0.5
+        stepperValue.text = "5"
+        stepper?.value = 5 */
+    }
+    
     @IBAction func beginEditRadius(_ sender: UITextField) {
         stopSound()
     }
@@ -100,9 +125,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func slideVolume(_ sender: UISlider) {
-       // volumeSlider.value = 0
         alarmSound?.volume = volumeSlider.value
-        
     }
     
     // TODO: Change so that phone vibrates increasingly with slider, not just vibrates once
@@ -130,14 +153,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         stepperValue.text = "5"
         stepper?.value = 5
     }
-
-    // Do I need this?
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {
-        chosenSound.numberOfLoops = numLoops // -1 Plays sound in never ending loop
+        chosenSound.numberOfLoops = numLoops
         chosenSound.play()
     }
     
@@ -197,5 +215,13 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     
-    
+    func persistData() {
+        userDefaults.set(radiusValue, forKey: "Radius Value")
+        // userDefaults.set(alarmSound, forKey: "Alarm Sound")
+        userDefaults.set(volumeSlider.value, forKey: "Volume")
+        userDefaults.set(vibrationSlider?.value, forKey: "Vibration Level")
+        userDefaults.set(stepper?.value, forKey: "Snooze Timer")
+        
+        userDefaults.synchronize()
+    }
 }

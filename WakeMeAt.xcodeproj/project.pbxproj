@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B11F757B0D3C04A8C839447 /* Pods_WakeMeAt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB4313AC5DA17C68A01F8DD /* Pods_WakeMeAt.framework */; };
+		9D0C735BFCC03CC0A298069F /* Pods_WakeMeAtTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5114CA94CBA75C6C2C1C5363 /* Pods_WakeMeAtTests.framework */; };
 		F11A56FD1DEF0E88004D2513 /* Alarm Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A56FC1DEF0E88004D2513 /* Alarm Buzzer.mp3 */; };
 		F11A56FF1DEF0ECB004D2513 /* Police Siren.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A56FE1DEF0ECB004D2513 /* Police Siren.mp3 */; };
 		F11A57011DEF0F23004D2513 /* Doorbell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A57001DEF0F23004D2513 /* Doorbell.mp3 */; };
@@ -37,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AB4313AC5DA17C68A01F8DD /* Pods_WakeMeAt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeMeAt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5114CA94CBA75C6C2C1C5363 /* Pods_WakeMeAtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeMeAtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CFF588B3CDB5ECF1B3A4DFD /* Pods-WakeMeAt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAt/Pods-WakeMeAt.debug.xcconfig"; sourceTree = "<group>"; };
+		AFB37196BA3F3BE6F4C62522 /* Pods-WakeMeAtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAtTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAtTests/Pods-WakeMeAtTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DB2A191D90163C7CB8D38F87 /* Pods-WakeMeAtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAtTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAtTests/Pods-WakeMeAtTests.release.xcconfig"; sourceTree = "<group>"; };
 		F11A56FC1DEF0E88004D2513 /* Alarm Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Alarm Buzzer.mp3"; path = "../../../../Downloads/Alarm Buzzer.mp3"; sourceTree = "<group>"; };
 		F11A56FE1DEF0ECB004D2513 /* Police Siren.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Police Siren.mp3"; path = "../../../../Downloads/Police Siren.mp3"; sourceTree = "<group>"; };
 		F11A57001DEF0F23004D2513 /* Doorbell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Doorbell.mp3; path = ../../../../Downloads/Doorbell.mp3; sourceTree = "<group>"; };
@@ -58,6 +65,7 @@
 		F1A14CD91DDE692000262503 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F1A14CE01DEE175900262503 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		FBD629A3EF4A09AF78425778 /* Pods-WakeMeAt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAt.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAt/Pods-WakeMeAt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +75,7 @@
 			files = (
 				F1A14CE31DEE1ABA00262503 /* MediaPlayer.framework in Frameworks */,
 				F1A14CE11DEE175900262503 /* AVFoundation.framework in Frameworks */,
+				7B11F757B0D3C04A8C839447 /* Pods_WakeMeAt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +83,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D0C735BFCC03CC0A298069F /* Pods_WakeMeAtTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39BDD1C41556C6BB3238B751 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6CFF588B3CDB5ECF1B3A4DFD /* Pods-WakeMeAt.debug.xcconfig */,
+				FBD629A3EF4A09AF78425778 /* Pods-WakeMeAt.release.xcconfig */,
+				AFB37196BA3F3BE6F4C62522 /* Pods-WakeMeAtTests.debug.xcconfig */,
+				DB2A191D90163C7CB8D38F87 /* Pods-WakeMeAtTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F129F28F1DB83F71001B3C8A = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +108,7 @@
 				F129F2B21DB83F71001B3C8A /* WakeMeAtTests */,
 				F129F2991DB83F71001B3C8A /* Products */,
 				F1A14CDF1DEE175900262503 /* Frameworks */,
+				39BDD1C41556C6BB3238B751 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +165,8 @@
 			children = (
 				F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */,
 				F1A14CE01DEE175900262503 /* AVFoundation.framework */,
+				0AB4313AC5DA17C68A01F8DD /* Pods_WakeMeAt.framework */,
+				5114CA94CBA75C6C2C1C5363 /* Pods_WakeMeAtTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,9 +178,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F129F2B81DB83F71001B3C8A /* Build configuration list for PBXNativeTarget "WakeMeAt" */;
 			buildPhases = (
+				6EB625766ED1F0FFE39BB496 /* [CP] Check Pods Manifest.lock */,
 				F129F2941DB83F71001B3C8A /* Sources */,
 				F129F2951DB83F71001B3C8A /* Frameworks */,
 				F129F2961DB83F71001B3C8A /* Resources */,
+				333E673FFD4A5A1D05A6C485 /* [CP] Embed Pods Frameworks */,
+				6EDD09B0B745C861C99CD78B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -171,9 +198,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F129F2BB1DB83F71001B3C8A /* Build configuration list for PBXNativeTarget "WakeMeAtTests" */;
 			buildPhases = (
+				4F1C4CEB09E447460FC82956 /* [CP] Check Pods Manifest.lock */,
 				F129F2AB1DB83F71001B3C8A /* Sources */,
 				F129F2AC1DB83F71001B3C8A /* Frameworks */,
 				F129F2AD1DB83F71001B3C8A /* Resources */,
+				AED52BF1F87D7393E3B61E6A /* [CP] Embed Pods Frameworks */,
+				7CF78D999011ABB5FACFEC70 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +280,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		333E673FFD4A5A1D05A6C485 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WakeMeAt/Pods-WakeMeAt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F1C4CEB09E447460FC82956 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6EB625766ED1F0FFE39BB496 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6EDD09B0B745C861C99CD78B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WakeMeAt/Pods-WakeMeAt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CF78D999011ABB5FACFEC70 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WakeMeAtTests/Pods-WakeMeAtTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AED52BF1F87D7393E3B61E6A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WakeMeAtTests/Pods-WakeMeAtTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F129F2941DB83F71001B3C8A /* Sources */ = {
@@ -395,6 +518,7 @@
 		};
 		F129F2B91DB83F71001B3C8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CFF588B3CDB5ECF1B3A4DFD /* Pods-WakeMeAt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WakeMeAt/Info.plist;
@@ -407,6 +531,7 @@
 		};
 		F129F2BA1DB83F71001B3C8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBD629A3EF4A09AF78425778 /* Pods-WakeMeAt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WakeMeAt/Info.plist;
@@ -419,6 +544,7 @@
 		};
 		F129F2BC1DB83F71001B3C8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFB37196BA3F3BE6F4C62522 /* Pods-WakeMeAtTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -433,6 +559,7 @@
 		};
 		F129F2BD1DB83F71001B3C8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB2A191D90163C7CB8D38F87 /* Pods-WakeMeAtTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

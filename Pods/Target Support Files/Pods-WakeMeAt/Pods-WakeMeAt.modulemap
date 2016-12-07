@@ -1,0 +1,6 @@
+framework module Pods_WakeMeAt {
+  umbrella header "Pods-WakeMeAt-umbrella.h"
+
+  export *
+  module * { export * }
+}

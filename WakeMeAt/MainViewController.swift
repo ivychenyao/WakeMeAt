@@ -21,6 +21,10 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var volume: Float!
     var vibration: Float!
     var snooze: Double!
+    var makeAlarmPend = false
+    var placesClient
+    
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,9 +77,13 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     
     func dropPin(location: CLLocation) {
-        mapView.removeAnnotations(mapView.annotations) // Deletes any previously dropped pins
+        // makeAlarmPend = false
+        self.mapView.removeAnnotations(self.mapView.annotations) // Deletes any previously dropped pins -- ANNOTATION DELETED BUT alarmPending() still runs on. Tried to add boolean makeAlarmPend but that didn't work well
         let coord: CLLocationCoordinate2D = location.coordinate
         let pin = MKPointAnnotation()
         pin.coordinate = coord
@@ -83,10 +91,11 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         mapView.addAnnotation(pin)
         
+        // makeAlarmPend = true
         alarmPending(userDestination: location)
     }
     
-    // TODO: Add a button (or pop up) to start alarm and tracking of distance between current location and destiantion
+    // TODO: Add a button (or pop up) to start alarm and tracking of distance between current location and destination
     func alarmPending(userDestination: CLLocation) {
         let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
         
@@ -100,19 +109,21 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             if Double(distance) <= Double(radius) {
                 print("Alarm goes off")
                 playAlarm()
-               
             }
         }
     }
     
     func playAlarm() {
-        // DOESN'T WORK
-        settingsViewController.playChosenSound(chosenSound: alarm, numLoops: -1)
+        settingsViewController.playChosenSound(chosenSound: alarm, numLoops: -1) // -1 plays sound in never ending loop
         
         // TODO: Make sure this only shows up once
         let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(radius!) mi away from your destination", preferredStyle:.alert)
-        hereAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        hereAlert.addAction(UIAlertAction(title: "Snooze for \(snooze!) min", style: UIAlertActionStyle.default, handler: nil))
+        let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) in print("OK I'm awake")})
+        hereAlert.addAction(okOption)
+            
+        let snoozeOption = UIAlertAction(title: "Snooze for \(snooze!) min", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in print("Snooze option clicked")})
+        hereAlert.addAction(snoozeOption)
+        
         self.present(hereAlert, animated: true, completion: nil)
     }
     
@@ -125,10 +136,10 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         self.mapView.setRegion(region, animated: true)
         
         // TODO: Drop red pin on user's pick of destination. Right now drops on user's current location
-        // dropPin(location: location)
+        dropPin(location: location)
         
         let NYLocation = CLLocation(latitude: 40.7128, longitude: 74.0059)
-        dropPin(location: NYLocation)
+        // dropPin(location: NYLocation)
         
         //self.mapView.showsUserLocation = true
     
