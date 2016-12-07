@@ -232,6 +232,24 @@
             </objects>
             <point key="canvasLocation" x="1744.8" y="762.36881559220399"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="rDP-2a-Uk7">
+            <objects>
+                <viewController id="qXD-i4-q80" customClass="SearchViewController" customModule="WakeMeAt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K5U-1r-xzf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qv4-d3-ifg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pAh-W5-ZHB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bA5-G0-lKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2399" y="1048"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="R9e-lb-b5J">
             <objects>
@@ -262,15 +280,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWP-ic-vVa">
-                                <rect key="frame" x="16" y="80" width="130" height="30"/>
+                                <rect key="frame" x="16" y="80" width="343" height="30"/>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="rWc-BX-2lo"/>
-                                </constraints>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Search Location">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="searchLocation:" destination="9Lk-f6-Y0K" eventType="touchUpInside" id="LPx-6v-FAV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -283,6 +301,7 @@
                             <constraint firstItem="cWP-ic-vVa" firstAttribute="leading" secondItem="n6v-Ui-BdO" secondAttribute="leading" constant="16" id="l7U-Rd-fL5"/>
                             <constraint firstItem="cWP-ic-vVa" firstAttribute="top" secondItem="1fg-df-fEr" secondAttribute="bottom" constant="16" id="yC7-t1-CdF"/>
                             <constraint firstAttribute="trailing" secondItem="OFe-EX-p91" secondAttribute="trailing" constant="16" id="ybH-oT-69g"/>
+                            <constraint firstAttribute="trailing" secondItem="cWP-ic-vVa" secondAttribute="trailing" constant="16" id="zTK-Ci-L5C"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zrP-aI-Xak"/>
@@ -308,7 +327,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hYT-ar-pbA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hhf-Gr-Umz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hhf-Gr-Umz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
