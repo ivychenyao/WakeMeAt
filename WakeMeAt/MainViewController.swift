@@ -123,29 +123,33 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     func playAlarm() {
+        if playAlarmBoolean == true {
             settingsViewController.playChosenSound(chosenSound: alarm, numLoops: -1) // -1 plays sound in never ending loop
-            let snoozeNSEC = snooze * 60 * Double(NSEC_PER_SEC)
         
-        
-            // TODO: Make sure this only shows up once
             let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(radius!) mi away from your destination", preferredStyle:.alert)
             let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) in self.okOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(okOption)
             
-            let snoozeOption = UIAlertAction(title: "Snooze for \(snooze!) min", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in sleep(UInt32(snoozeNSEC))})
+            let snoozeOption = UIAlertAction(title: "Snooze for \(snooze!) min", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in self.snoozeOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(snoozeOption)
         
             self.present(hereAlert, animated: true, completion: nil)
+        }
         
     }
     
     func okOptionClicked(hereAlert: UIAlertController) {
+        print("Done")
         playAlarmBoolean = false
         hereAlert.dismiss(animated: false, completion: nil)
         settingsViewController.stopSound()
     }
     
-   // func snoozeOpt
+    func snoozeOptionClicked(hereAlert: UIAlertController) {
+        print("Snooze")
+        Timer.scheduledTimer(timeInterval: snooze * 60, target: self, selector: Selector("okOptionClicked"), userInfo: nil, repeats: false)
+        
+    }
     
     // Have to override
     func locationManager(_ manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
