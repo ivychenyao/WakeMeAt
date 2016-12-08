@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import MediaPlayer
+import Darwin
 import GooglePlaces
 import GooglePlacePicker
 
@@ -26,6 +27,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var snooze: Double!
     var makeAlarmPend = false
     var placesClient: GMSPlacesClient!
+    var playAlarmBoolean = true
     
     let userDefaults = UserDefaults.standard
     
@@ -75,7 +77,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         }
         
         if let trySnooze = settingsViewController.stepper?.value {
-            snooze = trySnooze
+            // snooze = trySnooze
+            snooze = 1.0
         } else {
             snooze = 5.0
         }
@@ -84,8 +87,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
-    
     
     func dropPin(location: CLLocation) {
         // makeAlarmPend = false
@@ -106,32 +107,45 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
         
         // Calculates how far user current location is from destination
-        if userLocation?.coordinate != nil {
-            let distanceInMeters = userDestination.distance(from: userLocation!)
+        if playAlarmBoolean == true {
+            if userLocation?.coordinate != nil {
+                let distanceInMeters = userDestination.distance(from: userLocation!)
         
-            let distance = distanceInMeters / 1609.344
-            print(distance)
+                let distance = distanceInMeters / 1609.344
+                print(distance)
             
-            if Double(distance) <= Double(radius) {
-                print("Alarm goes off")
-                playAlarm()
+                if Double(distance) <= Double(radius) {
+                    print("Alarm goes off")
+                    playAlarm()
+                }
             }
         }
     }
     
     func playAlarm() {
-        settingsViewController.playChosenSound(chosenSound: alarm, numLoops: -1) // -1 plays sound in never ending loop
+            settingsViewController.playChosenSound(chosenSound: alarm, numLoops: -1) // -1 plays sound in never ending loop
+            let snoozeNSEC = snooze * 60 * Double(NSEC_PER_SEC)
         
-        // TODO: Make sure this only shows up once
-        let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(radius!) mi away from your destination", preferredStyle:.alert)
-        let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) in print("OK I'm awake")})
-        hereAlert.addAction(okOption)
+        
+            // TODO: Make sure this only shows up once
+            let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(radius!) mi away from your destination", preferredStyle:.alert)
+            let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) in self.okOptionClicked(hereAlert: hereAlert)})
+            hereAlert.addAction(okOption)
             
-        let snoozeOption = UIAlertAction(title: "Snooze for \(snooze!) min", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in print("Snooze option clicked")})
-        hereAlert.addAction(snoozeOption)
+            let snoozeOption = UIAlertAction(title: "Snooze for \(snooze!) min", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in sleep(UInt32(snoozeNSEC))})
+            hereAlert.addAction(snoozeOption)
         
-        self.present(hereAlert, animated: true, completion: nil)
+            self.present(hereAlert, animated: true, completion: nil)
+        
     }
+    
+    func okOptionClicked(hereAlert: UIAlertController) {
+        playAlarmBoolean = false
+        hereAlert.dismiss(animated: false, completion: nil)
+        settingsViewController.stopSound()
+    }
+    
+   // func snoozeOpt
     
     // Have to override
     func locationManager(_ manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
@@ -145,7 +159,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         dropPin(location: location)
         
         let NYLocation = CLLocation(latitude: 40.7128, longitude: 74.0059)
-        // dropPin(location: NYLocation)
+        //dropPin(location: NYLocation)
         
         //self.mapView.showsUserLocation = true
     }
