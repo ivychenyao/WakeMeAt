@@ -10,12 +10,14 @@ import UIKit
 import MapKit
 import CoreLocation
 import MediaPlayer
-import Darwin
 import GooglePlaces
 import GooglePlacePicker
 
 class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchLocationButton: UIButton!
+    
+    var resultSearchController: UISearchController? = nil
     
     var locationManager: CLLocationManager = CLLocationManager()
     var myPin: MKPinAnnotationView!
@@ -34,15 +36,29 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "WakeMeAt"
-        placesClient = GMSPlacesClient.shared()
+        //placesClient = GMSPlacesClient.shared()
         mapView.showsUserLocation = true
         
+        locationManager.delegate = self
+
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // How accurate
-        locationManager.delegate = self
         locationManager.startUpdatingLocation()
         
         self.mapView.delegate = self
+        
+        let locationSearchTable = storyboard?.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search Destination"
+        navigationItem.titleView = resultSearchController?.searchBar
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        locationSearchTable.mapView = mapView
         
         do {
             settingsViewController.alarmBuzzerPlayer = try AVAudioPlayer(contentsOf: settingsViewController.alarmBuzzerURL as URL)
@@ -82,6 +98,11 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         } else {
             snooze = 5.0
         }
+        
+        
+        
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -135,7 +156,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
             self.present(hereAlert, animated: true, completion: nil)
         }
-        
     }
     
     func okOptionClicked(hereAlert: UIAlertController) {
@@ -145,13 +165,25 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         settingsViewController.stopSound()
     }
     
-    func snoozeOptionClicked(hereAlert: UIAlertController) {
-        print("Snooze")
-        Timer.scheduledTimer(timeInterval: snooze * 60, target: self, selector: Selector("okOptionClicked"), userInfo: nil, repeats: false)
-        
+    func aye() {
+        print("halp lol f uckk")
     }
     
-    // Have to override
+    func snoozeOptionClicked(hereAlert: UIAlertController) {
+       // sleep(4058490328409238490)
+        //Thread.sleep(forTimeInterval: 60)
+        
+        //Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(aye), userInfo: nil, repeats: false)
+        
+        //Timer.
+        
+        // this delays function being called, not has function play for tha tlong
+        //DispatchQueue.main.asyncAfter(deadline: .now() + 4.3) {
+       //     self.playAlarm()
+       // }
+    }
+    
+
     func locationManager(_ manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         // Zooms in on current location
         let location = locations.last as! CLLocation
@@ -160,22 +192,43 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         self.mapView.setRegion(region, animated: true)
         
         // TODO: Drop red pin on user's pick of destination. Right now drops on user's current location
-        dropPin(location: location)
+        //dropPin(location: location)
         
         let NYLocation = CLLocation(latitude: 40.7128, longitude: 74.0059)
-        //dropPin(location: NYLocation)
+        dropPin(location: NYLocation)
         
         //self.mapView.showsUserLocation = true
     }
     
-    @IBAction func searchLocation(_ sender: UIButton) {
-        let center = CLLocationCoordinate2D(latitude: 37.788204, longitude: -122.411937)
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error: \(error)")
+    }
+    
+    /*@IBAction func searchLocation(_ sender: UIButton) {
+        let center = CLLocationCoordinate2DMake((locationManager.location?.coordinate.latitude)!,(locationManager.location?.coordinate.longitude)!)
         let northEast = CLLocationCoordinate2D(latitude: center.latitude + 0.001, longitude: center.longitude + 0.001)
         let southWest = CLLocationCoordinate2D(latitude: center.latitude - 0.001, longitude: center.longitude - 0.001)
         let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
         let config = GMSPlacePickerConfig(viewport: viewport)
         let placePicker = GMSPlacePicker(config: config)
         
+        
+        /*placePicker.pickPlace(callback: {(place, error) -> Void in
+            if let error = error {
+                print("Pick Place Error: \(error.localizedDescription)")
+                return
+            }
+            
+            if let place = place {
+                print(place.name)
+                self.searchLocationButton.setTitle(place.name, for: .normal)
+              //  print(place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n"))
+                
+                print(place.formattedAddress!)
+            }
+            
+            
+        }) //as! GMSPlaceResultCallback) */
         placePicker.pickPlace(callback: {(place, error) -> Void in
             if let error = error {
                 print("Pick Place error: \(error.localizedDescription)")
@@ -184,13 +237,16 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             
             if let place = place {
                 print(place.name)
-                print(place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n"))
+                //dropPin(location: place)
+                //print(place.name)
+                //print(place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n"))
             } else {
                // self.nameLabel.text = "No place selected"
                // self.addressLabel.text = ""
             }
         })
     
-    }
+    }*/
     
 }
+

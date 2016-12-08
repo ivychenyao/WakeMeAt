@@ -21,6 +21,7 @@
 		F129F2A61DB83F71001B3C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F129F2A51DB83F71001B3C8A /* Assets.xcassets */; };
 		F129F2A91DB83F71001B3C8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F129F2A71DB83F71001B3C8A /* LaunchScreen.storyboard */; };
 		F129F2B41DB83F71001B3C8A /* WakeMeAtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F129F2B31DB83F71001B3C8A /* WakeMeAtTests.swift */; };
+		F12B204B1DF9F94B00E49C06 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B204A1DF9F94B00E49C06 /* LocationSearchTable.swift */; };
 		F16E27AA1DF79FDA0008D2CA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16E27A91DF79FDA0008D2CA /* Settings.swift */; };
 		F1A14CD81DDE5BE800262503 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A14CD71DDE5BE800262503 /* MainViewController.swift */; };
 		F1A14CDA1DDE692000262503 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A14CD91DDE692000262503 /* SettingsViewController.swift */; };
@@ -60,6 +61,7 @@
 		F129F2AF1DB83F71001B3C8A /* WakeMeAtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WakeMeAtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F129F2B31DB83F71001B3C8A /* WakeMeAtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeMeAtTests.swift; sourceTree = "<group>"; };
 		F129F2B51DB83F71001B3C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F12B204A1DF9F94B00E49C06 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		F16E27A91DF79FDA0008D2CA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		F1A14CD71DDE5BE800262503 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F1A14CD91DDE692000262503 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				F129F2A71DB83F71001B3C8A /* LaunchScreen.storyboard */,
 				F129F2AA1DB83F71001B3C8A /* Info.plist */,
 				F129F2A21DB83F71001B3C8A /* WakeMeAt.xcdatamodeld */,
+				F12B204A1DF9F94B00E49C06 /* LocationSearchTable.swift */,
 			);
 			path = WakeMeAt;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				F129F2A41DB83F71001B3C8A /* WakeMeAt.xcdatamodeld in Sources */,
 				F129F29C1DB83F71001B3C8A /* AppDelegate.swift in Sources */,
 				F1A14CDA1DDE692000262503 /* SettingsViewController.swift in Sources */,
+				F12B204B1DF9F94B00E49C06 /* LocationSearchTable.swift in Sources */,
 				F1A14CD81DDE5BE800262503 /* MainViewController.swift in Sources */,
 				F16E27AA1DF79FDA0008D2CA /* Settings.swift in Sources */,
 			);

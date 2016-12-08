@@ -227,7 +227,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fkh-uF-FrW">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fkh-uF-FrW">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFe-EX-p91">
@@ -244,17 +244,6 @@
                                     <segue destination="oWf-QR-BvI" kind="show" id="J5U-p1-wgy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWP-ic-vVa">
-                                <rect key="frame" x="16" y="80" width="343" height="30"/>
-                                <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Search Location">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="searchLocation:" destination="9Lk-f6-Y0K" eventType="touchUpInside" id="LPx-6v-FAV"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -263,16 +252,13 @@
                             <constraint firstItem="Fkh-uF-FrW" firstAttribute="leading" secondItem="n6v-Ui-BdO" secondAttribute="leading" id="UwX-H8-AxU"/>
                             <constraint firstItem="OJc-tw-nCS" firstAttribute="top" secondItem="Fkh-uF-FrW" secondAttribute="bottom" id="hFz-vi-eqg"/>
                             <constraint firstItem="OJc-tw-nCS" firstAttribute="top" secondItem="OFe-EX-p91" secondAttribute="bottom" constant="16" id="jzg-9d-8K7"/>
-                            <constraint firstItem="cWP-ic-vVa" firstAttribute="leading" secondItem="n6v-Ui-BdO" secondAttribute="leading" constant="16" id="l7U-Rd-fL5"/>
-                            <constraint firstItem="cWP-ic-vVa" firstAttribute="top" secondItem="1fg-df-fEr" secondAttribute="bottom" constant="16" id="yC7-t1-CdF"/>
                             <constraint firstAttribute="trailing" secondItem="OFe-EX-p91" secondAttribute="trailing" constant="16" id="ybH-oT-69g"/>
-                            <constraint firstAttribute="trailing" secondItem="cWP-ic-vVa" secondAttribute="trailing" constant="16" id="zTK-Ci-L5C"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zrP-aI-Xak"/>
                     <connections>
                         <outlet property="mapView" destination="Fkh-uF-FrW" id="J5O-OT-ggm"/>
-                        <outlet property="searchDisplayController" destination="fSd-7p-DAu" id="5zD-nJ-MN0"/>
+                        <outlet property="searchDisplayController" destination="0be-He-acM" id="Uok-pu-7fY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mpd-gE-BKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -284,8 +270,44 @@
                         <outlet property="searchResultsDelegate" destination="9Lk-f6-Y0K" id="6Sq-2L-Vj2"/>
                     </connections>
                 </searchDisplayController>
+                <searchDisplayController id="0be-He-acM">
+                    <connections>
+                        <outlet property="delegate" destination="9Lk-f6-Y0K" id="Xs9-ku-o4Q"/>
+                        <outlet property="searchContentsController" destination="9Lk-f6-Y0K" id="A2r-jJ-GOQ"/>
+                        <outlet property="searchResultsDataSource" destination="9Lk-f6-Y0K" id="EpQ-tH-VUN"/>
+                        <outlet property="searchResultsDelegate" destination="9Lk-f6-Y0K" id="SxC-ca-BuX"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="984.79999999999995" y="763.26836581709154"/>
+        </scene>
+        <!--Location Search Table-->
+        <scene sceneID="eH9-yJ-fMf">
+            <objects>
+                <tableViewController storyboardIdentifier="LocationSearchTable" id="7mQ-F1-KJP" customClass="LocationSearchTable" customModule="WakeMeAt" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ELZ-29-ETU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="pnI-u9-gQ4">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pnI-u9-gQ4" id="Oh8-4f-zLy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7mQ-F1-KJP" id="1HP-g4-MFc"/>
+                            <outlet property="delegate" destination="7mQ-F1-KJP" id="1Ie-eX-01A"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZS-Ai-heJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985" y="103"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1bH-gj-ngB">

@@ -4,6 +4,11 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>bitch i need dat a(cce)ss</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
