@@ -22,7 +22,7 @@ class Settings {
     // Reset values to default in Settings. Called from SettingsViewController
     func reset() {
         radius = 5.0
-        // alarm =
+        alarm = Sounds.sharedInstance.alarmBuzzerPlayer
         volume = 0.5
         vibration = 0.5
         snooze = 5

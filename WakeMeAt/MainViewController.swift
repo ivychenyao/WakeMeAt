@@ -23,15 +23,16 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var selectedPin: MKPlacemark? = nil
     
     var locationManager: CLLocationManager = CLLocationManager()
-    var myPin: MKPinAnnotationView!
     var settingsViewController = SettingsViewController()
+    var playAlarmBoolean = true
+    /*var myPin: MKPinAnnotationView!
+    
     var radius: Double!
-    //var alarm = AVAudioPlayer()
     var volume: Float!
     var vibration: Float!
     var snooze: Double!
     var makeAlarmPend = false
-    var playAlarmBoolean = true
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,14 +67,9 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             print(error.localizedDescription)
         }
         
-        radius = settingsViewController.radiusValue
+        //radius = settingsViewController.radiusValue
         
-     /*   if let tryAlarm = settingsViewController.alarmSound {
-            alarm = tryAlarm
-        } else {
-            alarm = settingsViewController.alarmBuzzerPlayer
-        }
-        
+     /*
         if let tryVolume = settingsViewController.alarmSound?.volume {
             volume = tryVolume
         } else {
@@ -132,8 +128,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                 let distance = distanceInMeters / 1609.344
                 print(distance)
             
-                if Double(distance) <= Double(radius) {
-                    print("Alarm goes off")
+                if Double(distance) <= Double(Settings.sharedInstance.radius) {
                     playAlarm()
                 }
             }
@@ -144,13 +139,13 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         if playAlarmBoolean == true {
             settingsViewController.playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: -1) // -1 plays sound in never ending loop
         
-            let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(radius!) mi away from your destination", preferredStyle:.alert)
+            let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(Settings.sharedInstance.radius!) mi away from your destination", preferredStyle:.alert)
             let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) in self.okOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(okOption)
             
-        /*    let snoozeOption = UIAlertAction(title: "Snooze for \(snooze!) min", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in self.snoozeOptionClicked(hereAlert: hereAlert)})
+            let snoozeOption = UIAlertAction(title: "Snooze for \(lround(Settings.sharedInstance.snooze!)) min", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in self.snoozeOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(snoozeOption)
-        */
+        
             self.present(hereAlert, animated: true, completion: nil)
         }
     }

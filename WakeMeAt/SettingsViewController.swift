@@ -21,30 +21,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var stepper: UIStepper?
     @IBOutlet weak var stepperValue: UILabel!
     
-    var radiusValue = 5.0
-    
-//    // Alarm sound choices and path URLs
-//    var alarmBuzzerPlayer = AVAudioPlayer()
-//    var alarmBuzzerURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Alarm Buzzer", ofType: "mp3")!)
-//    
-//    var policeSirenPlayer = AVAudioPlayer()
-//    var policeSirenURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Police Siren", ofType: "mp3")!)
-//    
-//    var doorbellPlayer = AVAudioPlayer()
-//    var doorbellURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Doorbell", ofType: "mp3")!)
-//    
-//    var ambulancePlayer = AVAudioPlayer()
-//    var ambulanceURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Ambulance", ofType: "mp3")!)
-//    
-//    var hornHonkPlayer = AVAudioPlayer()
-//    var hornHonkURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Horn Honk", ofType: "mp3")!)
-//    
-//    var fireAlarmPlayer = AVAudioPlayer()
-//    var fireAlarmURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Fire Alarm", ofType: "mp3")!)
-//    
-//    var alarmSoundChoicesData: [String] = [String]()
-    //var alarmSound = AVAudioPlayer()
-    //var alarmSound: AVAudioPlayer?
+    //var radiusValue = 5.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,43 +43,30 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.alarmSoundChoices.delegate = self
         self.alarmSoundChoices.dataSource = self
         
-        // Input data into alarm sound choices data array
-        //alarmSoundChoicesData = ["Alarm Buzzer","Police Siren","Doorbell","Ambulance","Horn Honk","Fire Alarm","None"]
-      
         // Stepper properties
         stepper?.autorepeat = true
         stepper?.maximumValue = 15
         stepper?.minimumValue = 1
-        
-        // Makes snooze value an integer, not double
-        let stepperVal:Int = lround(self.stepper!.value)
-        self.stepperValue.text = "\(stepperVal)"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopSound()
-        //persistData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        print("Lit")
+        radius.text = "\(Settings.sharedInstance.radius!)"
         alarmSoundChoices.selectRow(Sounds.sharedInstance.alarmRow, inComponent: 0, animated: true)
-    
-        /*
-        stopSound() // optional?
         
-        print("\(userDefaults.double(forKey: "Radius"))")
-        radius.text = "\(userDefaults.double(forKey: "Radius"))"
-        alarmSoundChoices.reloadAllComponents()
-        alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
-        // alarmSound = alarmBuzzerPlayer
-        volumeSlider.value = 0.5
-        vibrationSlider?.value = 0.5
-        stepperValue.text = "5"
-        stepper?.value = 5 */
+        // TODO: Following 2 lines needed?
+        volumeSlider.value = Settings.sharedInstance.volume
+        vibrationSlider?.value = Settings.sharedInstance.vibration
+        stepperValue.text = "\(lround(Settings.sharedInstance.snooze!))"
+        stepper?.value = (Settings.sharedInstance.snooze)
+        
+        stopSound() // optional?
     }
     
     @IBAction func beginEditRadius(_ sender: UITextField) {
@@ -122,38 +86,35 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             radiusStrToDouble = Double(sender.text!)!
         }
         
-        radiusValue = radiusStrToDouble
+        Settings.sharedInstance.radius = radiusStrToDouble
     }
     
     @IBAction func slideVolume(_ sender: UISlider) {
-        Sounds.sharedInstance.alarmSound.volume = volumeSlider.value
+        Settings.sharedInstance.volume = volumeSlider.value
     }
     
     // TODO: Change so that phone vibrates increasingly with slider, not just vibrates once
     @IBAction func setVibration(_ sender: UISlider) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        Settings.sharedInstance.vibration = vibrationSlider?.value
     }
     
     // Change stepper label every time stepper is clicked
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         stopSound()
-        let stepperVal:Int = lround(self.stepper!.value)
-        self.stepperValue.text = "\(stepperVal)"
+        Settings.sharedInstance.snooze = self.stepper!.value
+        self.stepperValue.text = "\(lround(Settings.sharedInstance.snooze))"
     }
     
     @IBAction func resetClicked(_ sender: UIButton) {
         stopSound()
         
-        radius.text = "\(Settings.sharedInstance.radius)"
-        //radius.text = "5.0"
-        //radiusValue = 5.0
-        alarmSoundChoices.reloadAllComponents()
+        radius.text = "\(Settings.sharedInstance.radius!)"
         alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
-        Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.alarmBuzzerPlayer
         volumeSlider.value = 0.5
         vibrationSlider?.value = 0.5
         stepperValue.text = "5"
-        stepper?.value = 5
+        Settings.sharedInstance.reset()
     }
     
     func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {
@@ -162,6 +123,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func stopSound() {
+        Sounds.sharedInstance.alarmSound.stop()
         Sounds.sharedInstance.alarmBuzzerPlayer.stop()
         Sounds.sharedInstance.policeSirenPlayer.stop()
         Sounds.sharedInstance.doorbellPlayer.stop()
@@ -232,14 +194,4 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: 0)
         
     }
-    
-    /*func persistData() {
-        userDefaults.set(radiusValue, forKey: "Radius Value")
-        // userDefaults.set(alarmSound, forKey: "Alarm Sound")
-        userDefaults.set(volumeSlider.value, forKey: "Volume")
-        userDefaults.set(vibrationSlider?.value, forKey: "Vibration Level")
-        userDefaults.set(stepper?.value, forKey: "Snooze Timer")
-        
-        userDefaults.synchronize()
-    }*/
 }
