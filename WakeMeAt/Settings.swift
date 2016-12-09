@@ -10,7 +10,6 @@ import Foundation
 import MediaPlayer
 
 class Settings {
-
     static let sharedInstance = Settings()
 
     var radius: Double! = 5.0

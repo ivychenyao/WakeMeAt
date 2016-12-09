@@ -64,5 +64,6 @@ extension LocationSearchTable {
         let selectedItem = matchingItmes[indexPath.row].placemark
         handleMapSearchDelegate?.dropPinZoomIn(placemark: selectedItem)
         dismiss(animated: true, completion: nil)
+        print("Happening")
     }
 }

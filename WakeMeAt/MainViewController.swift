@@ -25,22 +25,13 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var locationManager: CLLocationManager = CLLocationManager()
     var settingsViewController = SettingsViewController()
     var playAlarmBoolean = true
-    /*var myPin: MKPinAnnotationView!
-    
-    var radius: Double!
-    var volume: Float!
-    var vibration: Float!
-    var snooze: Double!
-    var makeAlarmPend = false
-    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "WakeMeAt"
         mapView.showsUserLocation = true
-        
+    
         locationManager.delegate = self
-
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // How accurate
         locationManager.startUpdatingLocation()
@@ -90,7 +81,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         let myUserDestination = CLLocation(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude)
         
         alarmPending(userDestination: myUserDestination)
-        print("it happening")
         playAlarmBoolean = true
     }
     
@@ -128,13 +118,16 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     func okOptionClicked(hereAlert: UIAlertController) {
-        print("Done")
         playAlarmBoolean = false
         hereAlert.dismiss(animated: false, completion: nil)
         settingsViewController.stopSound()
     }
     
     func snoozeOptionClicked(hereAlert: UIAlertController) {
+        playAlarmBoolean = false
+        hereAlert.dismiss(animated: false, completion: nil)
+        settingsViewController.stopSound()
+        
        // sleep(4058490328409238490)
         //Thread.sleep(forTimeInterval: 60)
         
@@ -148,8 +141,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
        // }
     }
     
+    // Zooms in on current location
     func locationManager(_ manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        // Zooms in on current location
         let location = locations.last as! CLLocation
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
