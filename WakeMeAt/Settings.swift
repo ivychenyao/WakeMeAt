@@ -17,15 +17,15 @@ class Settings {
     var alarm = AVAudioPlayer()
     var volume: Float! = 0.5
     var vibration: Float! = 0.5
-//    var snooze: Double! =
+    var snooze: Double! = 5
 
-    
-    
     // Reset values to default in Settings. Called from SettingsViewController
     func reset() {
         radius = 5.0
-        // add all reset stuff here
-        
+        // alarm =
+        volume = 0.5
+        vibration = 0.5
+        snooze = 5
     }
     
     // Get all data from Settings. Called from MainViewController and SettingsViewController
@@ -35,8 +35,4 @@ class Settings {
                 "volume": volume,
                 "vibration": vibration]
     }
-    
-    
-    
-    
 }

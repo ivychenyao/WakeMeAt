@@ -6,10 +6,6 @@ target 'WakeMeAt' do
   use_frameworks!
 
   # Pods for WakeMeAt
-  pod 'GooglePlaces'
-  pod 'GooglePlacePicker'
-  pod 'GoogleMaps'
-
 
 
   target 'WakeMeAtTests' do

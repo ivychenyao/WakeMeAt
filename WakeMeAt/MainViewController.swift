@@ -10,8 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 import MediaPlayer
-import GooglePlaces
-import GooglePlacePicker
 
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)
@@ -28,12 +26,11 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var myPin: MKPinAnnotationView!
     var settingsViewController = SettingsViewController()
     var radius: Double!
-    var alarm = AVAudioPlayer()
+    //var alarm = AVAudioPlayer()
     var volume: Float!
     var vibration: Float!
     var snooze: Double!
     var makeAlarmPend = false
-    var placesClient: GMSPlacesClient!
     var playAlarmBoolean = true
     
     override func viewDidLoad() {
@@ -64,19 +61,14 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         locationSearchTable.handleMapSearchDelegate = self
         
         do {
-            settingsViewController.alarmBuzzerPlayer = try AVAudioPlayer(contentsOf: settingsViewController.alarmBuzzerURL as URL)
-            settingsViewController.policeSirenPlayer = try AVAudioPlayer(contentsOf: settingsViewController.policeSirenURL as URL)
-            settingsViewController.doorbellPlayer = try AVAudioPlayer(contentsOf: settingsViewController.doorbellURL as URL)
-            settingsViewController.ambulancePlayer = try AVAudioPlayer(contentsOf: settingsViewController.ambulanceURL as URL)
-            settingsViewController.hornHonkPlayer = try AVAudioPlayer(contentsOf: settingsViewController.hornHonkURL as URL)
-            settingsViewController.fireAlarmPlayer = try AVAudioPlayer(contentsOf: settingsViewController.fireAlarmURL as URL)
+            Sounds.sharedInstance.alarmSound = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.alarmSoundURL as URL)
         } catch let error {
             print(error.localizedDescription)
         }
         
         radius = settingsViewController.radiusValue
         
-        if let tryAlarm = settingsViewController.alarmSound {
+     /*   if let tryAlarm = settingsViewController.alarmSound {
             alarm = tryAlarm
         } else {
             alarm = settingsViewController.alarmBuzzerPlayer
@@ -100,7 +92,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             snooze = 1.0
         } else {
             snooze = 5.0
-        }
+        }*/
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -150,15 +142,15 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     func playAlarm() {
         if playAlarmBoolean == true {
-            settingsViewController.playChosenSound(chosenSound: alarm, numLoops: -1) // -1 plays sound in never ending loop
+            settingsViewController.playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: -1) // -1 plays sound in never ending loop
         
             let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(radius!) mi away from your destination", preferredStyle:.alert)
             let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) in self.okOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(okOption)
             
-            let snoozeOption = UIAlertAction(title: "Snooze for \(snooze!) min", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in self.snoozeOptionClicked(hereAlert: hereAlert)})
+        /*    let snoozeOption = UIAlertAction(title: "Snooze for \(snooze!) min", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in self.snoozeOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(snoozeOption)
-        
+        */
             self.present(hereAlert, animated: true, completion: nil)
         }
     }

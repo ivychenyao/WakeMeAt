@@ -16,37 +16,29 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		07790BD46C0A51AE9AF086D8F62242CC /* GooglePlacePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlacePicker.framework; path = Frameworks/GooglePlacePicker.framework; sourceTree = "<group>"; };
-		0782FA59EA7A0F529B3DE2D386610343 /* Pods_WakeMeAt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeMeAt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1117A6D1FE68A6F983D560933AF5E265 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		0782FA59EA7A0F529B3DE2D386610343 /* Pods_WakeMeAt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WakeMeAt.framework; path = "Pods-WakeMeAt.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD52A0C78C948FAC325DC82D3CE5B4D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C0454D6E001018A76F751EB85ABF22E /* Pods-WakeMeAtTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WakeMeAtTests-umbrella.h"; sourceTree = "<group>"; };
 		2BC2C1417244058C07918250133237A8 /* Pods-WakeMeAtTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WakeMeAtTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		3B61955999804F520B0B15B61C61B076 /* Pods-WakeMeAt-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WakeMeAt-frameworks.sh"; sourceTree = "<group>"; };
-		5DE6E84E1F9BE375171D4273DB830D11 /* Pods-WakeMeAtTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-WakeMeAtTests.modulemap"; sourceTree = "<group>"; };
+		5DE6E84E1F9BE375171D4273DB830D11 /* Pods-WakeMeAtTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-WakeMeAtTests.modulemap"; sourceTree = "<group>"; };
 		610610E84CD682C7D29E77584922852C /* Pods-WakeMeAt-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WakeMeAt-resources.sh"; sourceTree = "<group>"; };
 		6B29E29FFB7F06A14DE482C3A7C06AC8 /* Pods-WakeMeAt-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WakeMeAt-umbrella.h"; sourceTree = "<group>"; };
-		704E595DA7B7FC79885B0663196D8516 /* Pods_WakeMeAtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeMeAtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		704E595DA7B7FC79885B0663196D8516 /* Pods_WakeMeAtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WakeMeAtTests.framework; path = "Pods-WakeMeAtTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75DCB1E2A8487C797EE4A25F53490084 /* Pods-WakeMeAt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WakeMeAt.release.xcconfig"; sourceTree = "<group>"; };
-		80566F7504759753D49C071D141D7179 /* Pods-WakeMeAt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-WakeMeAt.modulemap"; sourceTree = "<group>"; };
+		80566F7504759753D49C071D141D7179 /* Pods-WakeMeAt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-WakeMeAt.modulemap"; sourceTree = "<group>"; };
 		83C395AEFEF2DF82472D1C916A4ED472 /* Pods-WakeMeAtTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WakeMeAtTests-frameworks.sh"; sourceTree = "<group>"; };
 		877127D25E8CCB1B498FCAA7346A16B9 /* Pods-WakeMeAtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WakeMeAtTests.release.xcconfig"; sourceTree = "<group>"; };
-		8BCCCA295DEE22197B0C283775AB5A26 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		955D3A22EB34AB333524A949DC729F6B /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A909532216377B6047E3B47F9858D7CB /* Pods-WakeMeAt-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WakeMeAt-acknowledgements.plist"; sourceTree = "<group>"; };
-		CA9245AB5B86A5BCD1E0D3BF7079D64B /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CDB59B4888C9F9906B241976F4ACF6DD /* Pods-WakeMeAt-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WakeMeAt-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D1DBCD0071D70866EBEFA8E983E0A2FE /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
 		D37685301E2AF294BE7BE3CDD2E86369 /* Pods-WakeMeAtTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WakeMeAtTests-resources.sh"; sourceTree = "<group>"; };
 		D6DDF6E0FCA9B2B3CA5FDFC269E0B4EB /* Pods-WakeMeAtTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WakeMeAtTests-dummy.m"; sourceTree = "<group>"; };
 		D6E04385BE924F4478B7C1944ED29313 /* Pods-WakeMeAtTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WakeMeAtTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DCB993D07DD2BE5F75FC97CC16E0EDAF /* Pods-WakeMeAt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WakeMeAt.debug.xcconfig"; sourceTree = "<group>"; };
 		EE0C74AE54F565FFC22A4571C504686D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF64522C37AEC2509AD6C772E20B083E /* Pods-WakeMeAtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WakeMeAtTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F769EDE7CC5A77CDBE3B2309AF3BD5FA /* GooglePlacePicker.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlacePicker.bundle; path = Frameworks/GooglePlacePicker.framework/Versions/A/Resources/GooglePlacePicker.bundle; sourceTree = "<group>"; };
-		F8567FFA809DD02B36CFB593922A14EA /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
 		FCAFDF8083971C496E950BD9D83F4D69 /* Pods-WakeMeAt-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WakeMeAt-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,23 +62,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		057612C31241123A1B53E2F8FEE23AB0 /* GooglePlaces */ = {
-			isa = PBXGroup;
-			children = (
-				8BA44F82F96D164DA342FB09A0BEE150 /* Frameworks */,
-				9595338FF99D6E406412D70BB160C308 /* Resources */,
-			);
-			path = GooglePlaces;
-			sourceTree = "<group>";
-		};
-		24E6408847EA4697EC99A3C22F9B2F8E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				CA9245AB5B86A5BCD1E0D3BF7079D64B /* GoogleMaps.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		4154FCF70BB56D7A565838B7491757B1 /* Pods-WakeMeAt */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,15 +78,6 @@
 			);
 			name = "Pods-WakeMeAt";
 			path = "Target Support Files/Pods-WakeMeAt";
-			sourceTree = "<group>";
-		};
-		45A6375AD18305E8BA7B79AD1BE61E9D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8BCCCA295DEE22197B0C283775AB5A26 /* GoogleMaps.framework */,
-				1117A6D1FE68A6F983D560933AF5E265 /* GoogleMapsCore.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		62FD792FB41E221BD19D78CC502DA3EF /* Products */ = {
@@ -131,64 +97,14 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		7A999BD5B4C2C01904FC59776164FBE1 /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-				45A6375AD18305E8BA7B79AD1BE61E9D /* Frameworks */,
-				24E6408847EA4697EC99A3C22F9B2F8E /* Resources */,
-			);
-			name = Maps;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				C62832EC902B481843EFC870F9D95CC2 /* Pods */,
 				62FD792FB41E221BD19D78CC502DA3EF /* Products */,
 				EFA9CA87CEB3C3D3285F50541177F460 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		8BA44F82F96D164DA342FB09A0BEE150 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				955D3A22EB34AB333524A949DC729F6B /* GooglePlaces.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8FFA7EAE118844748AD9685060A6B673 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				FD4ED290151C28ABCF7A3EA0217355EB /* Frameworks */,
-			);
-			name = Base;
-			sourceTree = "<group>";
-		};
-		9335B78F64E389AD6BD28E5033911D2C /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F769EDE7CC5A77CDBE3B2309AF3BD5FA /* GooglePlacePicker.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		9595338FF99D6E406412D70BB160C308 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F8567FFA809DD02B36CFB593922A14EA /* GooglePlaces.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		9C0A1FBBD02B7528347BC7FB84DE24F5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				07790BD46C0A51AE9AF086D8F62242CC /* GooglePlacePicker.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -217,34 +133,6 @@
 			path = "Target Support Files/Pods-WakeMeAtTests";
 			sourceTree = "<group>";
 		};
-		C62832EC902B481843EFC870F9D95CC2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E5C0912CEC7444CFF51EFFE502270519 /* GoogleMaps */,
-				CCA175DF4D87459CA14C4E01BCFDEF95 /* GooglePlacePicker */,
-				057612C31241123A1B53E2F8FEE23AB0 /* GooglePlaces */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		CCA175DF4D87459CA14C4E01BCFDEF95 /* GooglePlacePicker */ = {
-			isa = PBXGroup;
-			children = (
-				9C0A1FBBD02B7528347BC7FB84DE24F5 /* Frameworks */,
-				9335B78F64E389AD6BD28E5033911D2C /* Resources */,
-			);
-			path = GooglePlacePicker;
-			sourceTree = "<group>";
-		};
-		E5C0912CEC7444CFF51EFFE502270519 /* GoogleMaps */ = {
-			isa = PBXGroup;
-			children = (
-				8FFA7EAE118844748AD9685060A6B673 /* Base */,
-				7A999BD5B4C2C01904FC59776164FBE1 /* Maps */,
-			);
-			path = GoogleMaps;
-			sourceTree = "<group>";
-		};
 		EFA9CA87CEB3C3D3285F50541177F460 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,14 +140,6 @@
 				BC6A7B1C1A54F9CBE7BC793EB3FFB760 /* Pods-WakeMeAtTests */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		FD4ED290151C28ABCF7A3EA0217355EB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D1DBCD0071D70866EBEFA8E983E0A2FE /* GoogleMapsBase.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,11 +206,6 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
-				TargetAttributes = {
-					1EC042446B85B3325A617C7111DCF4B5 = {
-						LastSwiftMigration = 0810;
-					};
-				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -418,7 +293,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DCB993D07DD2BE5F75FC97CC16E0EDAF /* Pods-WakeMeAt.debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -444,8 +318,6 @@
 				PRODUCT_NAME = Pods_WakeMeAt;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -491,7 +363,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 75DCB1E2A8487C797EE4A25F53490084 /* Pods-WakeMeAt.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -517,7 +388,6 @@
 				PRODUCT_NAME = Pods_WakeMeAt;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

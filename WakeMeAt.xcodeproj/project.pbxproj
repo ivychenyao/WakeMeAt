@@ -27,6 +27,7 @@
 		F1A14CDA1DDE692000262503 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A14CD91DDE692000262503 /* SettingsViewController.swift */; };
 		F1A14CE11DEE175900262503 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A14CE01DEE175900262503 /* AVFoundation.framework */; };
 		F1A14CE31DEE1ABA00262503 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */; };
+		F1CE65F21DFA446B00A9B69A /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CE65F11DFA446B00A9B69A /* Sounds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		F1A14CD91DDE692000262503 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F1A14CE01DEE175900262503 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		F1CE65F11DFA446B00A9B69A /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		FBD629A3EF4A09AF78425778 /* Pods-WakeMeAt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAt.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAt/Pods-WakeMeAt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,7 @@
 				F129F29B1DB83F71001B3C8A /* AppDelegate.swift */,
 				F129F29F1DB83F71001B3C8A /* Main.storyboard */,
 				F1A14CD91DDE692000262503 /* SettingsViewController.swift */,
+				F1CE65F11DFA446B00A9B69A /* Sounds.swift */,
 				F16E27A91DF79FDA0008D2CA /* Settings.swift */,
 				F1A14CD71DDE5BE800262503 /* MainViewController.swift */,
 				F129F2A51DB83F71001B3C8A /* Assets.xcassets */,
@@ -386,6 +389,7 @@
 				F129F29C1DB83F71001B3C8A /* AppDelegate.swift in Sources */,
 				F1A14CDA1DDE692000262503 /* SettingsViewController.swift in Sources */,
 				F12B204B1DF9F94B00E49C06 /* LocationSearchTable.swift in Sources */,
+				F1CE65F21DFA446B00A9B69A /* Sounds.swift in Sources */,
 				F1A14CD81DDE5BE800262503 /* MainViewController.swift in Sources */,
 				F16E27AA1DF79FDA0008D2CA /* Settings.swift in Sources */,
 			);

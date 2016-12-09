@@ -23,31 +23,28 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     var radiusValue = 5.0
     
-    
-    // Alarm sound choices and path URLs
-    var alarmBuzzerPlayer = AVAudioPlayer()
-    var alarmBuzzerURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Alarm Buzzer", ofType: "mp3")!)
-    
-    var policeSirenPlayer = AVAudioPlayer()
-    var policeSirenURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Police Siren", ofType: "mp3")!)
-    
-    var doorbellPlayer = AVAudioPlayer()
-    var doorbellURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Doorbell", ofType: "mp3")!)
-    
-    var ambulancePlayer = AVAudioPlayer()
-    var ambulanceURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Ambulance", ofType: "mp3")!)
-    
-    var hornHonkPlayer = AVAudioPlayer()
-    var hornHonkURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Horn Honk", ofType: "mp3")!)
-    
-    var fireAlarmPlayer = AVAudioPlayer()
-    var fireAlarmURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Fire Alarm", ofType: "mp3")!)
-    
-    var alarmSoundChoicesData: [String] = [String]()
+//    // Alarm sound choices and path URLs
+//    var alarmBuzzerPlayer = AVAudioPlayer()
+//    var alarmBuzzerURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Alarm Buzzer", ofType: "mp3")!)
+//    
+//    var policeSirenPlayer = AVAudioPlayer()
+//    var policeSirenURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Police Siren", ofType: "mp3")!)
+//    
+//    var doorbellPlayer = AVAudioPlayer()
+//    var doorbellURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Doorbell", ofType: "mp3")!)
+//    
+//    var ambulancePlayer = AVAudioPlayer()
+//    var ambulanceURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Ambulance", ofType: "mp3")!)
+//    
+//    var hornHonkPlayer = AVAudioPlayer()
+//    var hornHonkURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Horn Honk", ofType: "mp3")!)
+//    
+//    var fireAlarmPlayer = AVAudioPlayer()
+//    var fireAlarmURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Fire Alarm", ofType: "mp3")!)
+//    
+//    var alarmSoundChoicesData: [String] = [String]()
     //var alarmSound = AVAudioPlayer()
-    var alarmSound: AVAudioPlayer?
-    
-    let userDefaults = UserDefaults.standard
+    //var alarmSound: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,22 +52,21 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         // Loads alarm sound choices
         do {
-            alarmBuzzerPlayer = try AVAudioPlayer(contentsOf: alarmBuzzerURL as URL)
-            policeSirenPlayer = try AVAudioPlayer(contentsOf: policeSirenURL as URL)
-            doorbellPlayer = try AVAudioPlayer(contentsOf: doorbellURL as URL)
-            ambulancePlayer = try AVAudioPlayer(contentsOf: ambulanceURL as URL)
-            hornHonkPlayer = try AVAudioPlayer(contentsOf: hornHonkURL as URL)
-            fireAlarmPlayer = try AVAudioPlayer(contentsOf: fireAlarmURL as URL)
+            Sounds.sharedInstance.alarmBuzzerPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.alarmBuzzerURL as URL)
+            Sounds.sharedInstance.policeSirenPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.policeSirenURL as URL)
+            Sounds.sharedInstance.doorbellPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.doorbellURL as URL)
+            Sounds.sharedInstance.ambulancePlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.ambulanceURL as URL)
+            Sounds.sharedInstance.hornHonkPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.hornHonkURL as URL)
+            Sounds.sharedInstance.fireAlarmPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.fireAlarmURL as URL)
         } catch let error {
             print(error.localizedDescription)
         }
         
-        self.alarmSound = alarmBuzzerPlayer
         self.alarmSoundChoices.delegate = self
         self.alarmSoundChoices.dataSource = self
         
         // Input data into alarm sound choices data array
-        alarmSoundChoicesData = ["Alarm Buzzer","Police Siren","Doorbell","Ambulance","Horn Honk","Fire Alarm","None"]
+        //alarmSoundChoicesData = ["Alarm Buzzer","Police Siren","Doorbell","Ambulance","Horn Honk","Fire Alarm","None"]
       
         // Stepper properties
         stepper?.autorepeat = true
@@ -84,20 +80,23 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        persistData()
+        stopSound()
+        //persistData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         print("Lit")
+        alarmSoundChoices.selectRow(Sounds.sharedInstance.alarmRow, inComponent: 0, animated: true)
+    
         /*
         stopSound() // optional?
         
         print("\(userDefaults.double(forKey: "Radius"))")
         radius.text = "\(userDefaults.double(forKey: "Radius"))"
         alarmSoundChoices.reloadAllComponents()
-        // alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
+        alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
         // alarmSound = alarmBuzzerPlayer
         volumeSlider.value = 0.5
         vibrationSlider?.value = 0.5
@@ -126,7 +125,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func slideVolume(_ sender: UISlider) {
-        alarmSound?.volume = volumeSlider.value
+        Sounds.sharedInstance.alarmSound.volume = volumeSlider.value
     }
     
     // TODO: Change so that phone vibrates increasingly with slider, not just vibrates once
@@ -144,11 +143,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBAction func resetClicked(_ sender: UIButton) {
         stopSound()
         
-        radius.text = "5.0"
-        radiusValue = 5.0
+        radius.text = "\(Settings.sharedInstance.radius)"
+        //radius.text = "5.0"
+        //radiusValue = 5.0
         alarmSoundChoices.reloadAllComponents()
         alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
-        alarmSound = alarmBuzzerPlayer
+        Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.alarmBuzzerPlayer
         volumeSlider.value = 0.5
         vibrationSlider?.value = 0.5
         stepperValue.text = "5"
@@ -161,12 +161,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func stopSound() {
-        alarmBuzzerPlayer.stop()
-        policeSirenPlayer.stop()
-        doorbellPlayer.stop()
-        ambulancePlayer.stop()
-        hornHonkPlayer.stop()
-        fireAlarmPlayer.stop()
+        Sounds.sharedInstance.alarmBuzzerPlayer.stop()
+        Sounds.sharedInstance.policeSirenPlayer.stop()
+        Sounds.sharedInstance.doorbellPlayer.stop()
+        Sounds.sharedInstance.ambulancePlayer.stop()
+        Sounds.sharedInstance.hornHonkPlayer.stop()
+        Sounds.sharedInstance.fireAlarmPlayer.stop()
     }
     
     // Number of columns of data in alarm sound picker
@@ -176,47 +176,62 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     // Number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return alarmSoundChoicesData.count
+        return Sounds.sharedInstance.alarmSoundChoicesData.count
     }
     
     // Data to return for row and component (column) that is being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return alarmSoundChoicesData[row]
+        return Sounds.sharedInstance.alarmSoundChoicesData[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row == 0 {
-            alarmSound = alarmBuzzerPlayer
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.alarmBuzzerPlayer
+            Sounds.sharedInstance.alarmRow = 0
         }
         
         else if row == 1 {
-            alarmSound = policeSirenPlayer
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.policeSirenPlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.policeSirenURL
+            Sounds.sharedInstance.alarmRow = 1
         }
         
         else if row == 2 {
-            alarmSound = doorbellPlayer
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.doorbellPlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.doorbellURL
+            Sounds.sharedInstance.alarmRow = 2
         }
         
         else if row == 3 {
-            alarmSound = ambulancePlayer
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.ambulancePlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.ambulanceURL
+            Sounds.sharedInstance.alarmRow = 3
         }
         
         else if row == 4 {
-            alarmSound = hornHonkPlayer
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.hornHonkPlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.hornHonkURL
+            Sounds.sharedInstance.alarmRow = 4
         }
             
         else if row == 5 {
-            alarmSound = fireAlarmPlayer
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.fireAlarmPlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.fireAlarmURL
+            Sounds.sharedInstance.alarmRow = 5
+        }
+        
+        else if row == 6 {
+            Sounds.sharedInstance.alarmRow = 6
         }
         
         stopSound()
         
         if row != 6 {
-            playChosenSound(chosenSound: alarmSound!, numLoops: 0)
+            playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: 0)
         }
     }
     
-    func persistData() {
+    /*func persistData() {
         userDefaults.set(radiusValue, forKey: "Radius Value")
         // userDefaults.set(alarmSound, forKey: "Alarm Sound")
         userDefaults.set(volumeSlider.value, forKey: "Volume")
@@ -224,5 +239,5 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         userDefaults.set(stepper?.value, forKey: "Snooze Timer")
         
         userDefaults.synchronize()
-    }
+    }*/
 }
