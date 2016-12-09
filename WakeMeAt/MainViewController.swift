@@ -17,7 +17,7 @@ protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)
 }
 
-class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
+class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate, HandleMapSearch {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchLocationButton: UIButton!
     
@@ -64,6 +64,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
+        
         
         do {
             settingsViewController.alarmBuzzerPlayer = try AVAudioPlayer(contentsOf: settingsViewController.alarmBuzzerURL as URL)
@@ -111,13 +113,13 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     func dropPinZoomIn(placemark: MKPlacemark) {
         selectedPin = placemark
-        self.mapView.removeAnnotation(self.mapView.annotations as! MKAnnotation)
+        mapView.removeAnnotations(mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
-        if let city = placemark.locality, let state = placemark.administrativeArea {
-            annotation.subtitle = "(city) (state)"
-        }
+        let city = placemark.locality
+        let state = placemark.administrativeArea
+        annotation.subtitle = "\(city!) \(state!)"
         
         mapView.addAnnotation(annotation)
         let span = MKCoordinateSpanMake(0.05, 0.05)
@@ -125,7 +127,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         mapView.setRegion(region, animated: true)
     }
     
-    func dropPin(location: CLLocation) {
+   /* func dropPin(location: CLLocation) {
         // makeAlarmPend = false
         self.mapView.removeAnnotations(self.mapView.annotations) // Deletes any previously dropped pins -- ANNOTATION DELETED BUT alarmPending() still runs on. Tried to add boolean makeAlarmPend but that didn't work well
         let coord: CLLocationCoordinate2D = location.coordinate
@@ -141,7 +143,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         // makeAlarmPend = true
         alarmPending(userDestination: location)
-    }
+    }*/
     
     // TODO: Add a button (or pop up) to start alarm and tracking of distance between current location and destination
     func alarmPending(userDestination: CLLocation) {
@@ -215,7 +217,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         //dropPin(location: location)
         
         let NYLocation = CLLocation(latitude: 40.7128, longitude: 74.0059)
-        dropPin(location: NYLocation)
+        //dropPin(location: NYLocation)
         
         //self.mapView.showsUserLocation = true
     }
