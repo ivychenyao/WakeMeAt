@@ -13,11 +13,16 @@ import MediaPlayer
 import GooglePlaces
 import GooglePlacePicker
 
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark: MKPlacemark)
+}
+
 class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchLocationButton: UIButton!
     
     var resultSearchController: UISearchController? = nil
+    var selectedPin: MKPlacemark? = nil
     
     var locationManager: CLLocationManager = CLLocationManager()
     var myPin: MKPinAnnotationView!
@@ -98,15 +103,26 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         } else {
             snooze = 5.0
         }
-        
-        
-        
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    func dropPinZoomIn(placemark: MKPlacemark) {
+        selectedPin = placemark
+        self.mapView.removeAnnotation(self.mapView.annotations as! MKAnnotation)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality, let state = placemark.administrativeArea {
+            annotation.subtitle = "(city) (state)"
+        }
+        
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)
     }
     
     func dropPin(location: CLLocation) {
@@ -118,6 +134,10 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         pin.title = "Destination" // Add address of inputted destination
         
         mapView.addAnnotation(pin)
+        
+        
+        
+        
         
         // makeAlarmPend = true
         alarmPending(userDestination: location)
@@ -204,49 +224,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         print("Error: \(error)")
     }
     
-    /*@IBAction func searchLocation(_ sender: UIButton) {
-        let center = CLLocationCoordinate2DMake((locationManager.location?.coordinate.latitude)!,(locationManager.location?.coordinate.longitude)!)
-        let northEast = CLLocationCoordinate2D(latitude: center.latitude + 0.001, longitude: center.longitude + 0.001)
-        let southWest = CLLocationCoordinate2D(latitude: center.latitude - 0.001, longitude: center.longitude - 0.001)
-        let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
-        let config = GMSPlacePickerConfig(viewport: viewport)
-        let placePicker = GMSPlacePicker(config: config)
-        
-        
-        /*placePicker.pickPlace(callback: {(place, error) -> Void in
-            if let error = error {
-                print("Pick Place Error: \(error.localizedDescription)")
-                return
-            }
-            
-            if let place = place {
-                print(place.name)
-                self.searchLocationButton.setTitle(place.name, for: .normal)
-              //  print(place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n"))
-                
-                print(place.formattedAddress!)
-            }
-            
-            
-        }) //as! GMSPlaceResultCallback) */
-        placePicker.pickPlace(callback: {(place, error) -> Void in
-            if let error = error {
-                print("Pick Place error: \(error.localizedDescription)")
-                return
-            }
-            
-            if let place = place {
-                print(place.name)
-                //dropPin(location: place)
-                //print(place.name)
-                //print(place.formattedAddress?.components(separatedBy: ", ").joined(separator: "\n"))
-            } else {
-               // self.nameLabel.text = "No place selected"
-               // self.addressLabel.text = ""
-            }
-        })
-    
-    }*/
     
 }
 
