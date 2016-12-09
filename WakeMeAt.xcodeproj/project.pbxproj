@@ -28,6 +28,7 @@
 		F1A14CE11DEE175900262503 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A14CE01DEE175900262503 /* AVFoundation.framework */; };
 		F1A14CE31DEE1ABA00262503 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */; };
 		F1CE65F21DFA446B00A9B69A /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CE65F11DFA446B00A9B69A /* Sounds.swift */; };
+		F1CE65F41DFA4E4800A9B69A /* None.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1CE65F31DFA4E4800A9B69A /* None.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		F1A14CE01DEE175900262503 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F1CE65F11DFA446B00A9B69A /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		F1CE65F31DFA4E4800A9B69A /* None.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = None.mp3; path = ../../../../Downloads/None.mp3; sourceTree = "<group>"; };
 		FBD629A3EF4A09AF78425778 /* Pods-WakeMeAt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAt.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAt/Pods-WakeMeAt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 				F11A57041DEF0F95004D2513 /* Ambulance.mp3 */,
 				F11A57061DEF100A004D2513 /* Horn Honk.mp3 */,
 				F11A57021DEF0F61004D2513 /* Fire Alarm.mp3 */,
+				F1CE65F31DFA4E4800A9B69A /* None.mp3 */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			files = (
 				F11A57071DEF100A004D2513 /* Horn Honk.mp3 in Resources */,
 				F129F2A91DB83F71001B3C8A /* LaunchScreen.storyboard in Resources */,
+				F1CE65F41DFA4E4800A9B69A /* None.mp3 in Resources */,
 				F11A57051DEF0F95004D2513 /* Ambulance.mp3 in Resources */,
 				F11A57031DEF0F61004D2513 /* Fire Alarm.mp3 in Resources */,
 				F11A57011DEF0F23004D2513 /* Doorbell.mp3 in Resources */,

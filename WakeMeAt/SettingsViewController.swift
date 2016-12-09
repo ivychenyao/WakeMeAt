@@ -58,6 +58,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             Sounds.sharedInstance.ambulancePlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.ambulanceURL as URL)
             Sounds.sharedInstance.hornHonkPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.hornHonkURL as URL)
             Sounds.sharedInstance.fireAlarmPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.fireAlarmURL as URL)
+            Sounds.sharedInstance.nonePlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.noneURL as URL)
         } catch let error {
             print(error.localizedDescription)
         }
@@ -221,14 +222,15 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         
         else if row == 6 {
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.nonePlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.noneURL
             Sounds.sharedInstance.alarmRow = 6
         }
         
         stopSound()
         
-        if row != 6 {
-            playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: 0)
-        }
+        playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: 0)
+        
     }
     
     /*func persistData() {

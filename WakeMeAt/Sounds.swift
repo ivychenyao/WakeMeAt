@@ -37,6 +37,9 @@ class Sounds {
     var fireAlarmPlayer = AVAudioPlayer()
     var fireAlarmURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Fire Alarm", ofType: "mp3")!)
     
+    var nonePlayer = AVAudioPlayer()
+    var noneURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "None", ofType: "mp3")!)
+    
     var alarmSoundChoicesData = ["Alarm Buzzer","Police Siren","Doorbell","Ambulance","Horn Honk","Fire Alarm","None"]
     
     init() {
@@ -51,6 +54,7 @@ class Sounds {
                 "Doorbell": doorbellPlayer,
                 "Ambulance": ambulancePlayer,
                 "Horn Honk": hornHonkPlayer,
-                "Fire Alarm": fireAlarmPlayer]
+                "Fire Alarm": fireAlarmPlayer,
+                "None": nonePlayer]
     }
 }
