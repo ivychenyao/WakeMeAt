@@ -125,6 +125,10 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
+        
+        let myUserDestination = CLLocation(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude)
+        
+        alarmPending(userDestination: myUserDestination)
     }
     
    /* func dropPin(location: CLLocation) {
