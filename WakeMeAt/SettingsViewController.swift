@@ -113,6 +113,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         volumeSlider.value = 0.5
         vibrationSlider?.value = 0.5
         stepperValue.text = "5"
+        stepper?.value = 5.0
     }
     
     func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {
