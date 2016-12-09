@@ -23,6 +23,7 @@ class Settings {
     func reset() {
         radius = 5.0
         alarm = Sounds.sharedInstance.alarmBuzzerPlayer
+        Sounds.sharedInstance.alarmRow = 0
         volume = 0.5
         vibration = 0.5
         snooze = 5

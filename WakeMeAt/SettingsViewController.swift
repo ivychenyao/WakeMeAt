@@ -21,8 +21,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var stepper: UIStepper?
     @IBOutlet weak var stepperValue: UILabel!
     
-    //var radiusValue = 5.0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Settings"
@@ -108,13 +106,13 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func resetClicked(_ sender: UIButton) {
         stopSound()
-        
+        Settings.sharedInstance.reset()
+
         radius.text = "\(Settings.sharedInstance.radius!)"
         alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
         volumeSlider.value = 0.5
         vibrationSlider?.value = 0.5
         stepperValue.text = "5"
-        Settings.sharedInstance.reset()
     }
     
     func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {

@@ -66,29 +66,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         } catch let error {
             print(error.localizedDescription)
         }
-        
-        //radius = settingsViewController.radiusValue
-        
-     /*
-        if let tryVolume = settingsViewController.alarmSound?.volume {
-            volume = tryVolume
-        } else {
-            volume = 0.5
-        }
-        
-        // TODO: Could just call setVibration() in SettingsView instead to make phone vibrate when arrived?
-        if let tryVibration = settingsViewController.vibrationSlider?.value {
-            vibration = tryVibration
-        } else {
-            vibration = 0.5
-        }
-        
-        if let trySnooze = settingsViewController.stepper?.value {
-            // snooze = trySnooze
-            snooze = 1.0
-        } else {
-            snooze = 5.0
-        }*/
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,10 +90,10 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         let myUserDestination = CLLocation(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude)
         
         alarmPending(userDestination: myUserDestination)
+        print("it happening")
         playAlarmBoolean = true
     }
     
-    // TODO: Add a button (or pop up) to start alarm and tracking of distance between current location and destination
     func alarmPending(userDestination: CLLocation) {
         let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
         
