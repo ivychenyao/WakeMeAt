@@ -36,12 +36,9 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var placesClient: GMSPlacesClient!
     var playAlarmBoolean = true
     
-    let userDefaults = UserDefaults.standard
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "WakeMeAt"
-        //placesClient = GMSPlacesClient.shared()
         mapView.showsUserLocation = true
         
         locationManager.delegate = self
@@ -65,7 +62,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         definesPresentationContext = true
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
-        
         
         do {
             settingsViewController.alarmBuzzerPlayer = try AVAudioPlayer(contentsOf: settingsViewController.alarmBuzzerURL as URL)
@@ -129,25 +125,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         let myUserDestination = CLLocation(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude)
         
         alarmPending(userDestination: myUserDestination)
+        playAlarmBoolean = true
     }
-    
-   /* func dropPin(location: CLLocation) {
-        // makeAlarmPend = false
-        self.mapView.removeAnnotations(self.mapView.annotations) // Deletes any previously dropped pins -- ANNOTATION DELETED BUT alarmPending() still runs on. Tried to add boolean makeAlarmPend but that didn't work well
-        let coord: CLLocationCoordinate2D = location.coordinate
-        let pin = MKPointAnnotation()
-        pin.coordinate = coord
-        pin.title = "Destination" // Add address of inputted destination
-        
-        mapView.addAnnotation(pin)
-        
-        
-        
-        
-        
-        // makeAlarmPend = true
-        alarmPending(userDestination: location)
-    }*/
     
     // TODO: Add a button (or pop up) to start alarm and tracking of distance between current location and destination
     func alarmPending(userDestination: CLLocation) {
@@ -191,10 +170,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         settingsViewController.stopSound()
     }
     
-    func aye() {
-        print("halp lol f uckk")
-    }
-    
     func snoozeOptionClicked(hereAlert: UIAlertController) {
        // sleep(4058490328409238490)
         //Thread.sleep(forTimeInterval: 60)
@@ -209,27 +184,11 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
        // }
     }
     
-
     func locationManager(_ manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         // Zooms in on current location
         let location = locations.last as! CLLocation
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(region, animated: true)
-        
-        // TODO: Drop red pin on user's pick of destination. Right now drops on user's current location
-        //dropPin(location: location)
-        
-        let NYLocation = CLLocation(latitude: 40.7128, longitude: 74.0059)
-        //dropPin(location: NYLocation)
-        
-        //self.mapView.showsUserLocation = true
     }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error: \(error)")
-    }
-    
-    
 }
-
