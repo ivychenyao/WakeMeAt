@@ -315,6 +315,7 @@
         <!--Navigation Controller-->
         <scene sceneID="1bH-gj-ngB">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ihq-6v-V0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hYT-ar-pbA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hhf-Gr-Umz">
@@ -326,13 +327,13 @@
                         <segue destination="9Lk-f6-Y0K" kind="relationship" relationship="rootViewController" id="m5F-zg-vgL"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ihq-6v-V0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="45.600000000000001" y="763.26836581709154"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="fOb-ey-oqL">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hmz-nl-ug8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="LZv-4E-Anf" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qpi-Te-DcG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -355,12 +356,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="s2P-Jj-ISG"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hmz-nl-ug8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lWa-AN-egi">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NN3-YY-xBQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="xme-Nz-hyy" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3nc-1F-xmR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -370,7 +371,6 @@
                         <segue destination="LZv-4E-Anf" kind="relationship" relationship="rootViewController" id="PB2-MO-JnL"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NN3-YY-xBQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
