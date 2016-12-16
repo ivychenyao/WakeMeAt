@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B11F757B0D3C04A8C839447 /* Pods_WakeMeAt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB4313AC5DA17C68A01F8DD /* Pods_WakeMeAt.framework */; };
-		9D0C735BFCC03CC0A298069F /* Pods_WakeMeAtTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5114CA94CBA75C6C2C1C5363 /* Pods_WakeMeAtTests.framework */; };
 		F11A56FD1DEF0E88004D2513 /* Alarm Buzzer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A56FC1DEF0E88004D2513 /* Alarm Buzzer.mp3 */; };
 		F11A56FF1DEF0ECB004D2513 /* Police Siren.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A56FE1DEF0ECB004D2513 /* Police Siren.mp3 */; };
 		F11A57011DEF0F23004D2513 /* Doorbell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F11A57001DEF0F23004D2513 /* Doorbell.mp3 */; };
@@ -42,11 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0AB4313AC5DA17C68A01F8DD /* Pods_WakeMeAt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeMeAt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5114CA94CBA75C6C2C1C5363 /* Pods_WakeMeAtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeMeAtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CFF588B3CDB5ECF1B3A4DFD /* Pods-WakeMeAt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAt/Pods-WakeMeAt.debug.xcconfig"; sourceTree = "<group>"; };
-		AFB37196BA3F3BE6F4C62522 /* Pods-WakeMeAtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAtTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAtTests/Pods-WakeMeAtTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DB2A191D90163C7CB8D38F87 /* Pods-WakeMeAtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAtTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAtTests/Pods-WakeMeAtTests.release.xcconfig"; sourceTree = "<group>"; };
+		310DB2D35C738CA55315EAE5 /* Pods-WakeMeAt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAt.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAt/Pods-WakeMeAt.release.xcconfig"; sourceTree = "<group>"; };
+		50252FBC955EA58A6DE518CD /* Pods-WakeMeAtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAtTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAtTests/Pods-WakeMeAtTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A297AC6E75404F5CABCD95D3 /* Pods-WakeMeAt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAt/Pods-WakeMeAt.debug.xcconfig"; sourceTree = "<group>"; };
+		BDFFF1BABDB5A948929F6F5B /* Pods-WakeMeAtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAtTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAtTests/Pods-WakeMeAtTests.release.xcconfig"; sourceTree = "<group>"; };
 		F11A56FC1DEF0E88004D2513 /* Alarm Buzzer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Alarm Buzzer.mp3"; path = "../../../../Downloads/Alarm Buzzer.mp3"; sourceTree = "<group>"; };
 		F11A56FE1DEF0ECB004D2513 /* Police Siren.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Police Siren.mp3"; path = "../../../../Downloads/Police Siren.mp3"; sourceTree = "<group>"; };
 		F11A57001DEF0F23004D2513 /* Doorbell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Doorbell.mp3; path = ../../../../Downloads/Doorbell.mp3; sourceTree = "<group>"; };
@@ -71,7 +68,6 @@
 		F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F1CE65F11DFA446B00A9B69A /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		F1CE65F31DFA4E4800A9B69A /* None.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = None.mp3; path = ../../../../Downloads/None.mp3; sourceTree = "<group>"; };
-		FBD629A3EF4A09AF78425778 /* Pods-WakeMeAt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeMeAt.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeMeAt/Pods-WakeMeAt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +77,6 @@
 			files = (
 				F1A14CE31DEE1ABA00262503 /* MediaPlayer.framework in Frameworks */,
 				F1A14CE11DEE175900262503 /* AVFoundation.framework in Frameworks */,
-				7B11F757B0D3C04A8C839447 /* Pods_WakeMeAt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,20 +84,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D0C735BFCC03CC0A298069F /* Pods_WakeMeAtTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		39BDD1C41556C6BB3238B751 /* Pods */ = {
+		2C8645022AEC0822B733C9F7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6CFF588B3CDB5ECF1B3A4DFD /* Pods-WakeMeAt.debug.xcconfig */,
-				FBD629A3EF4A09AF78425778 /* Pods-WakeMeAt.release.xcconfig */,
-				AFB37196BA3F3BE6F4C62522 /* Pods-WakeMeAtTests.debug.xcconfig */,
-				DB2A191D90163C7CB8D38F87 /* Pods-WakeMeAtTests.release.xcconfig */,
+				A297AC6E75404F5CABCD95D3 /* Pods-WakeMeAt.debug.xcconfig */,
+				310DB2D35C738CA55315EAE5 /* Pods-WakeMeAt.release.xcconfig */,
+				50252FBC955EA58A6DE518CD /* Pods-WakeMeAtTests.debug.xcconfig */,
+				BDFFF1BABDB5A948929F6F5B /* Pods-WakeMeAtTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -114,7 +108,7 @@
 				F129F2B21DB83F71001B3C8A /* WakeMeAtTests */,
 				F129F2991DB83F71001B3C8A /* Products */,
 				F1A14CDF1DEE175900262503 /* Frameworks */,
-				39BDD1C41556C6BB3238B751 /* Pods */,
+				2C8645022AEC0822B733C9F7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,8 +168,6 @@
 			children = (
 				F1A14CE21DEE1ABA00262503 /* MediaPlayer.framework */,
 				F1A14CE01DEE175900262503 /* AVFoundation.framework */,
-				0AB4313AC5DA17C68A01F8DD /* Pods_WakeMeAt.framework */,
-				5114CA94CBA75C6C2C1C5363 /* Pods_WakeMeAtTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -236,10 +228,12 @@
 				TargetAttributes = {
 					F129F2971DB83F71001B3C8A = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = Y3VWCT3DH8;
 						ProvisioningStyle = Automatic;
 					};
 					F129F2AE1DB83F71001B3C8A = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = Y3VWCT3DH8;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F129F2971DB83F71001B3C8A;
 					};
@@ -458,6 +452,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -477,7 +472,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -507,6 +502,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -520,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -530,9 +526,12 @@
 		};
 		F129F2B91DB83F71001B3C8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CFF588B3CDB5ECF1B3A4DFD /* Pods-WakeMeAt.debug.xcconfig */;
+			baseConfigurationReference = A297AC6E75404F5CABCD95D3 /* Pods-WakeMeAt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Y3VWCT3DH8;
 				INFOPLIST_FILE = WakeMeAt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ivy.WakeMeAt;
@@ -543,9 +542,12 @@
 		};
 		F129F2BA1DB83F71001B3C8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FBD629A3EF4A09AF78425778 /* Pods-WakeMeAt.release.xcconfig */;
+			baseConfigurationReference = 310DB2D35C738CA55315EAE5 /* Pods-WakeMeAt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Y3VWCT3DH8;
 				INFOPLIST_FILE = WakeMeAt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ivy.WakeMeAt;
@@ -556,14 +558,19 @@
 		};
 		F129F2BC1DB83F71001B3C8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFB37196BA3F3BE6F4C62522 /* Pods-WakeMeAtTests.debug.xcconfig */;
+			baseConfigurationReference = 50252FBC955EA58A6DE518CD /* Pods-WakeMeAtTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Y3VWCT3DH8;
 				INFOPLIST_FILE = WakeMeAtTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ivy.WakeMeAtTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WakeMeAt.app/WakeMeAt";
 			};
@@ -571,14 +578,19 @@
 		};
 		F129F2BD1DB83F71001B3C8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB2A191D90163C7CB8D38F87 /* Pods-WakeMeAtTests.release.xcconfig */;
+			baseConfigurationReference = BDFFF1BABDB5A948929F6F5B /* Pods-WakeMeAtTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Y3VWCT3DH8;
 				INFOPLIST_FILE = WakeMeAtTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ivy.WakeMeAtTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WakeMeAt.app/WakeMeAt";
 			};

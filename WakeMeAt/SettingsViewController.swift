@@ -18,8 +18,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var radius: UITextField!
     @IBOutlet weak var volumeSlider: UISlider!
     @IBOutlet weak var vibrationSlider: UISlider?
-    @IBOutlet weak var stepper: UIStepper?
-    @IBOutlet weak var stepperValue: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +38,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         self.alarmSoundChoices.delegate = self
         self.alarmSoundChoices.dataSource = self
-        
-        // Stepper properties
-        stepper?.autorepeat = true
-        stepper?.maximumValue = 15
-        stepper?.minimumValue = 1
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,10 +53,13 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         volumeSlider.value = Settings.sharedInstance.volume
         vibrationSlider?.value = Settings.sharedInstance.vibration
-        stepperValue.text = "\(lround(Settings.sharedInstance.snooze!))"
-        stepper?.value = (Settings.sharedInstance.snooze)
         
         stopSound() // optional?
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        radius?.endEditing(true)
     }
     
     @IBAction func beginEditRadius(_ sender: UITextField) {
@@ -96,13 +92,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         Settings.sharedInstance.vibration = vibrationSlider?.value
     }
     
-    // Change stepper label every time stepper is clicked
-    @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        stopSound()
-        Settings.sharedInstance.snooze = self.stepper!.value
-        self.stepperValue.text = "\(lround(Settings.sharedInstance.snooze))"
-    }
-    
     @IBAction func resetClicked(_ sender: UIButton) {
         stopSound()
         Settings.sharedInstance.reset()
@@ -111,8 +100,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
         volumeSlider.value = 0.5
         vibrationSlider?.value = 0.5
-        stepperValue.text = "5"
-        stepper?.value = 5.0
     }
     
     func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {
@@ -123,7 +110,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func stopSound() {
         Sounds.sharedInstance.alarmSound.stop()
-        Sounds.sharedInstance.alarmBuzzerPlayer.stop()
+        Sounds.sharedInstance.alarmBuzzerPlayer.stop() // TODO: Bad access
         Sounds.sharedInstance.policeSirenPlayer.stop()
         Sounds.sharedInstance.doorbellPlayer.stop()
         Sounds.sharedInstance.ambulancePlayer.stop()

@@ -57,6 +57,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         } catch let error {
             print(error.localizedDescription)
         }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,9 +70,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
-        let city = placemark.locality
-        let state = placemark.administrativeArea
-        annotation.subtitle = "\(city!) \(state!)"
         
         mapView.addAnnotation(annotation)
         let span = MKCoordinateSpanMake(0.05, 0.05)
@@ -110,7 +108,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) in self.okOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(okOption)
             
-            let snoozeOption = UIAlertAction(title: "Snooze for \(lround(Settings.sharedInstance.snooze!)) min", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in self.snoozeOptionClicked(hereAlert: hereAlert)})
+            let snoozeOption = UIAlertAction(title: "Snooze for 1 minute", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in self.snoozeOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(snoozeOption)
         
             self.present(hereAlert, animated: true, completion: nil)
@@ -124,26 +122,16 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     func snoozeOptionClicked(hereAlert: UIAlertController) {
-        playAlarmBoolean = false
-        hereAlert.dismiss(animated: false, completion: nil)
         settingsViewController.stopSound()
-        
-       // sleep(4058490328409238490)
-        //Thread.sleep(forTimeInterval: 60)
-        
-        //Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(aye), userInfo: nil, repeats: false)
-        
-        //Timer.
-        
-        // this delays function being called, not has function play for tha tlong
-        //DispatchQueue.main.asyncAfter(deadline: .now() + 4.3) {
-       //     self.playAlarm()
-       // }
+        let deadlineTime = DispatchTime.now() + .seconds(60)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
+            self.playAlarm()
+        })
     }
     
     // Zooms in on current location
-    func locationManager(_ manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        let location = locations.last as! CLLocation
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last! //as! CLLocation
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(region, animated: true)
