@@ -12,14 +12,14 @@ import MediaPlayer
 class Settings {
     static let sharedInstance = Settings()
 
-    var radius: Double! = 5.0
+    var radius: Double! = 1.0
     var alarm = AVAudioPlayer()
     var volume: Float! = 0.5
     var vibration: Float! = 0.5
 
     // Reset values to default in Settings. Called from SettingsViewController
     func reset() {
-        radius = 5.0
+        radius = 1.0
         alarm = Sounds.sharedInstance.alarmBuzzerPlayer
         Sounds.sharedInstance.alarmRow = 0
         volume = 0.5

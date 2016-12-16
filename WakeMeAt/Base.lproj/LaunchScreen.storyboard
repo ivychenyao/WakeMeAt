@@ -25,13 +25,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="tintColor" red="0.2274509804" green="0.52156862749999999" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wake Me At" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFT-Pk-2aa">
-                                <rect key="frame" x="16" y="333" width="349" height="135"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Wake Me At" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFT-Pk-2aa">
+                                <rect key="frame" x="68.5" y="367" width="245.5" height="60"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                                 <color key="textColor" red="0.2274509804" green="0.52156862749999999" blue="0.47450980390000003" alpha="0.95573814655172418" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXc-Qv-3Cx">
+                                <rect key="frame" x="0.0" y="179" width="375" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="3xx-n8-Mfn">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -39,6 +47,7 @@
                             <constraint firstItem="iwj-f5-AHh" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="JIc-AV-iHB"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="iwj-f5-AHh" secondAttribute="bottom" id="Nhp-7K-M71"/>
                             <constraint firstItem="iwj-f5-AHh" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="bWC-lc-FWh"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="SFT-Pk-2aa" secondAttribute="bottom" constant="240" id="eP5-em-h4g"/>
                         </constraints>
                     </view>
                 </viewController>
