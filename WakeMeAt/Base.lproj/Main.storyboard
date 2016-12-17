@@ -231,12 +231,25 @@
                                     <segue destination="oWf-QR-BvI" kind="show" id="J5U-p1-wgy"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No destination set" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7T-le-xhc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="33"/>
+                                <color key="backgroundColor" red="0.2274509804" green="0.52156862749999999" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="XUH-C1-81E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fkh-uF-FrW" firstAttribute="top" secondItem="1fg-df-fEr" secondAttribute="bottom" id="2Sz-5f-nQx"/>
+                            <constraint firstAttribute="trailing" secondItem="X7T-le-xhc" secondAttribute="trailing" id="5Cc-sc-ztP"/>
                             <constraint firstAttribute="trailing" secondItem="Fkh-uF-FrW" secondAttribute="trailing" id="PDP-Ws-izw"/>
                             <constraint firstItem="Fkh-uF-FrW" firstAttribute="leading" secondItem="n6v-Ui-BdO" secondAttribute="leading" id="UwX-H8-AxU"/>
+                            <constraint firstItem="X7T-le-xhc" firstAttribute="leading" secondItem="n6v-Ui-BdO" secondAttribute="leading" id="anj-lU-BcE"/>
+                            <constraint firstItem="X7T-le-xhc" firstAttribute="top" secondItem="1fg-df-fEr" secondAttribute="bottom" id="bNB-7q-ImJ"/>
                             <constraint firstItem="OJc-tw-nCS" firstAttribute="top" secondItem="Fkh-uF-FrW" secondAttribute="bottom" id="hFz-vi-eqg"/>
                             <constraint firstItem="OJc-tw-nCS" firstAttribute="top" secondItem="OFe-EX-p91" secondAttribute="bottom" constant="16" id="jzg-9d-8K7"/>
                             <constraint firstAttribute="trailing" secondItem="OFe-EX-p91" secondAttribute="trailing" constant="16" id="ybH-oT-69g"/>
@@ -244,20 +257,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="zrP-aI-Xak"/>
                     <connections>
+                        <outlet property="distanceCounterLabel" destination="X7T-le-xhc" id="QVK-RB-r6v"/>
                         <outlet property="mapView" destination="Fkh-uF-FrW" id="J5O-OT-ggm"/>
                         <outlet property="searchDisplayController" destination="0be-He-acM" id="Uok-pu-7fY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mpd-gE-BKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="fSd-7p-DAu">
-                    <connections>
-                        <outlet property="delegate" destination="9Lk-f6-Y0K" id="Hth-7u-JZX"/>
-                        <outlet property="searchContentsController" destination="9Lk-f6-Y0K" id="Vda-mq-aTr"/>
-                        <outlet property="searchResultsDataSource" destination="9Lk-f6-Y0K" id="Ig3-U3-co7"/>
-                        <outlet property="searchResultsDelegate" destination="9Lk-f6-Y0K" id="6Sq-2L-Vj2"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="0be-He-acM">
+                <searchDisplayController searchResultsTitle="" id="0be-He-acM">
                     <connections>
                         <outlet property="delegate" destination="9Lk-f6-Y0K" id="Xs9-ku-o4Q"/>
                         <outlet property="searchContentsController" destination="9Lk-f6-Y0K" id="A2r-jJ-GOQ"/>

@@ -18,6 +18,7 @@ protocol HandleMapSearch {
 class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate, HandleMapSearch {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchLocationButton: UIButton!
+    @IBOutlet weak var distanceCounterLabel: UILabel!
     
     var resultSearchController: UISearchController? = nil
     var selectedPin: MKPlacemark? = nil
@@ -83,15 +84,17 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     func alarmPending(userDestination: CLLocation) {
-        let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
+//        let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
         
         // Calculates how far user current location is from destination
         if playAlarmBoolean == true {
+            let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
             if userLocation?.coordinate != nil {
                 let distanceInMeters = userDestination.distance(from: userLocation!)
         
                 let distance = distanceInMeters / 1609.344
-                print(distance)
+                let distanceStr = String(format: "%.2f", distance)
+                distanceCounterLabel.text = "\(distanceStr) mi away"
             
                 if Double(distance) <= Double(Settings.sharedInstance.radius) {
                     playAlarm()
@@ -119,6 +122,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         playAlarmBoolean = false
         hereAlert.dismiss(animated: false, completion: nil)
         settingsViewController.stopSound()
+        distanceCounterLabel.text = "No destination set"
     }
     
     func snoozeOptionClicked(hereAlert: UIAlertController) {

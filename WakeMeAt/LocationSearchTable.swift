@@ -11,7 +11,7 @@ import MapKit
 
 class LocationSearchTable: UITableViewController {
     var handleMapSearchDelegate: HandleMapSearch? = nil
-    var matchingItmes:[MKMapItem] = []
+    var matchingItems:[MKMapItem] = []
     var mapView: MKMapView? = nil
     
     func parseAddress(selectedItem: MKPlacemark) -> String {
@@ -37,7 +37,7 @@ extension LocationSearchTable: UISearchResultsUpdating {
             guard let response = response else {
                 return
             }
-            self.matchingItmes = response.mapItems
+            self.matchingItems = response.mapItems
             self.tableView.reloadData()
         })
     }
@@ -46,12 +46,12 @@ extension LocationSearchTable: UISearchResultsUpdating {
 extension LocationSearchTable {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         super.tableView(tableView, numberOfRowsInSection: section)
-        return matchingItmes.count
+        return matchingItems.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        let selectedItem = matchingItmes[indexPath.row].placemark
+        let selectedItem = matchingItems[indexPath.row].placemark
         cell.textLabel?.text = selectedItem.name
         cell.detailTextLabel?.text = parseAddress(selectedItem: selectedItem)
         
@@ -61,7 +61,7 @@ extension LocationSearchTable {
 
 extension LocationSearchTable {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedItem = matchingItmes[indexPath.row].placemark
+        let selectedItem = matchingItems[indexPath.row].placemark
         handleMapSearchDelegate?.dropPinZoomIn(placemark: selectedItem)
         dismiss(animated: true, completion: nil)
     }
