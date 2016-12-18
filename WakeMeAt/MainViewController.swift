@@ -63,6 +63,25 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // If user didn't allow Location Services to be enabled, pop-up notification asks user to allow
+        if CLLocationManager.authorizationStatus() == .denied {
+            let locationServicesDeniedAlarm = UIAlertController(title: "Location services were previously denied", message: "Please enable location services for this app in Settings", preferredStyle: .alert)
+            let goToSettings = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                    return
+                }
+            
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl)
+                }
+            }
+            
+            let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            locationServicesDeniedAlarm.addAction(goToSettings)
+            locationServicesDeniedAlarm.addAction(cancelAlert)
+            self.present(locationServicesDeniedAlarm, animated: true, completion: nil)
+        }
     }
     
     func dropPinZoomIn(placemark: MKPlacemark) {
@@ -84,12 +103,13 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     func alarmPending(userDestination: CLLocation) {
-//        let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
+        let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
         
         // Calculates how far user current location is from destination
         if playAlarmBoolean == true {
-            let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
+            //let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
             if userLocation?.coordinate != nil {
+                
                 let distanceInMeters = userDestination.distance(from: userLocation!)
         
                 let distance = distanceInMeters / 1609.344
@@ -135,7 +155,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     // Zooms in on current location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last! //as! CLLocation
+        let location = locations.last!
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(region, animated: true)
