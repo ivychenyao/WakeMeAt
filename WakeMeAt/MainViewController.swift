@@ -16,6 +16,8 @@ protocol HandleMapSearch {
 }
 
 class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate, HandleMapSearch {
+    
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchLocationButton: UIButton!
     @IBOutlet weak var distanceCounterLabel: UILabel!
@@ -58,7 +60,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         } catch let error {
             print(error.localizedDescription)
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,6 +87,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     func dropPinZoomIn(placemark: MKPlacemark) {
         selectedPin = placemark
+        resultSearchController?.searchBar.text = placemark.name
         mapView.removeAnnotations(mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
@@ -103,11 +105,11 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     func alarmPending(userDestination: CLLocation) {
+        UIApplication.shared.isIdleTimerDisabled = true // Prevents device from locking
         let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
         
         // Calculates how far user current location is from destination
         if playAlarmBoolean == true {
-            //let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
             if userLocation?.coordinate != nil {
                 
                 let distanceInMeters = userDestination.distance(from: userLocation!)
@@ -159,5 +161,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(region, animated: true)
+        
+        
+        
     }
 }
