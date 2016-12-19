@@ -32,6 +32,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var userCurrentLocation: CLLocation? = nil
     var userDestination: CLLocation? = nil
     var counter = 0
+    var snoozeAlarmBoolean = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +131,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     } */
     
     func playAlarm() {
+        snoozeAlarmBoolean = false
         if playAlarmBoolean == true {
             settingsViewController.playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: -1) // -1 plays sound in never ending loop
             if Settings.sharedInstance.vibration > 0 {
@@ -158,7 +160,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     func snoozeOptionClicked(hereAlert: UIAlertController) {
-        counter = 0
+        snoozeAlarmBoolean = true
+        counter = 0 // Necessary?
         settingsViewController.stopSound()
         let deadlineTime = DispatchTime.now() + .seconds(60)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
@@ -183,7 +186,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                 let distanceStr = String(format: "%.2f", distance)
                 distanceCounterLabel.text = "\(distanceStr) mi away"
                 
-                if Double(distance) <= Double(Settings.sharedInstance.radius) {
+                if (Double(distance) <= Double(Settings.sharedInstance.radius)) && (snoozeAlarmBoolean == false) {
                     counter += 1
                     
                     if counter == 1 {
