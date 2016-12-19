@@ -29,11 +29,15 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var settingsViewController = SettingsViewController()
     var playAlarmBoolean = true
     
+    var userCurrentLocation: CLLocation? = nil
+    var userDestination: CLLocation? = nil
+    var counter = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "WakeMeAt"
         mapView.showsUserLocation = true
-    
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // How accurate
@@ -72,7 +76,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                 guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
                     return
                 }
-            
+                
                 if UIApplication.shared.canOpenURL(settingsUrl) {
                     UIApplication.shared.open(settingsUrl)
                 }
@@ -87,8 +91,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     func dropPinZoomIn(placemark: MKPlacemark) {
         selectedPin = placemark
-        resultSearchController?.searchBar.text = placemark.name
         mapView.removeAnnotations(mapView.annotations)
+        resultSearchController?.searchBar.text = placemark.name // Changes search bar to display name of placemark
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
@@ -98,56 +102,63 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
         
-        let myUserDestination = CLLocation(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude)
+        userDestination = CLLocation(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude)
         
-        alarmPending(userDestination: myUserDestination)
+        //alarmPending(userDestination: userDestination!)
         playAlarmBoolean = true
     }
-    
+    /*
     func alarmPending(userDestination: CLLocation) {
         UIApplication.shared.isIdleTimerDisabled = true // Prevents device from locking
-        let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
+        //let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
         
         // Calculates how far user current location is from destination
         if playAlarmBoolean == true {
-            if userLocation?.coordinate != nil {
+            if userCurrentLocation?.coordinate != nil {
+                print("User Current Location: \(userCurrentLocation)!")
+                let distanceInMeters = userDestination.distance(from: userCurrentLocation!)
                 
-                let distanceInMeters = userDestination.distance(from: userLocation!)
-        
                 let distance = distanceInMeters / 1609.344
                 let distanceStr = String(format: "%.2f", distance)
                 distanceCounterLabel.text = "\(distanceStr) mi away"
-            
+                
                 if Double(distance) <= Double(Settings.sharedInstance.radius) {
                     playAlarm()
                 }
             }
         }
-    }
+    } */
     
     func playAlarm() {
         if playAlarmBoolean == true {
             settingsViewController.playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: -1) // -1 plays sound in never ending loop
-        
+            if Settings.sharedInstance.vibration > 0 {
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate)) // used to have AudioServicesPlayAlertSound
+            }
+            
             let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(Settings.sharedInstance.radius!) mi away from your destination", preferredStyle:.alert)
             let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) in self.okOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(okOption)
             
             let snoozeOption = UIAlertAction(title: "Snooze for 1 minute", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in self.snoozeOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(snoozeOption)
-        
+            
             self.present(hereAlert, animated: true, completion: nil)
         }
     }
     
     func okOptionClicked(hereAlert: UIAlertController) {
         playAlarmBoolean = false
+        userDestination = nil
         hereAlert.dismiss(animated: false, completion: nil)
         settingsViewController.stopSound()
         distanceCounterLabel.text = "No destination set"
+        resultSearchController?.searchBar.text = ""
+        counter = 0
     }
     
     func snoozeOptionClicked(hereAlert: UIAlertController) {
+        counter = 0
         settingsViewController.stopSound()
         let deadlineTime = DispatchTime.now() + .seconds(60)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
@@ -158,11 +169,30 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     // Zooms in on current location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last!
+        userCurrentLocation = location
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(region, animated: true)
         
-        
+        if userDestination != nil {
+            if playAlarmBoolean == true {
+                UIApplication.shared.isIdleTimerDisabled = true
+                let distanceInMeters = userDestination!.distance(from: userCurrentLocation!)
+                
+                let distance = distanceInMeters / 1609.344
+                let distanceStr = String(format: "%.2f", distance)
+                distanceCounterLabel.text = "\(distanceStr) mi away"
+                
+                if Double(distance) <= Double(Settings.sharedInstance.radius) {
+                    counter += 1
+                    
+                    if counter == 1 {
+                        playAlarm()
+                    }
+                }
+            }
+        }
         
     }
+    
 }

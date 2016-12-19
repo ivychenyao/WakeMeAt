@@ -88,8 +88,11 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     // TODO: Change so that phone vibrates increasingly with slider, not just vibrates once
     @IBAction func setVibration(_ sender: UISlider) {
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         Settings.sharedInstance.vibration = vibrationSlider?.value
+        
+        if Settings.sharedInstance.vibration > 0 {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        }
     }
     
     @IBAction func resetClicked(_ sender: UIButton) {
@@ -136,6 +139,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row == 0 {
             Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.alarmBuzzerPlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.alarmBuzzerURL
             Sounds.sharedInstance.alarmRow = 0
         }
         
