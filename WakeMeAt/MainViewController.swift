@@ -16,8 +16,6 @@ protocol HandleMapSearch {
 }
 
 class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate, HandleMapSearch {
-    
-    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchLocationButton: UIButton!
     @IBOutlet weak var distanceCounterLabel: UILabel!
@@ -65,6 +63,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         } catch let error {
             print(error.localizedDescription)
         }
+        
+        UserDefaults.standard.set(false, forKey: "Settings did load")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,8 +88,13 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             locationServicesDeniedAlarm.addAction(cancelAlert)
             self.present(locationServicesDeniedAlarm, animated: true, completion: nil)
         }
+        
+        // Only executes if user never went into Settings - ensures UserDefaults are default values and not all 0
+        if UserDefaults.standard.bool(forKey: "Settings did load") == false {
+            Settings.sharedInstance.setDefaults()
+        }
     }
-    
+
     func dropPinZoomIn(placemark: MKPlacemark) {
         selectedPin = placemark
         mapView.removeAnnotations(mapView.annotations)
@@ -104,31 +109,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         mapView.setRegion(region, animated: true)
         
         userDestination = CLLocation(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude)
-        
-        //alarmPending(userDestination: userDestination!)
         playAlarmBoolean = true
     }
-    /*
-    func alarmPending(userDestination: CLLocation) {
-        UIApplication.shared.isIdleTimerDisabled = true // Prevents device from locking
-        //let userLocation = mapView.userLocation.location // Coordinate of blue circle, user's location
-        
-        // Calculates how far user current location is from destination
-        if playAlarmBoolean == true {
-            if userCurrentLocation?.coordinate != nil {
-                print("User Current Location: \(userCurrentLocation)!")
-                let distanceInMeters = userDestination.distance(from: userCurrentLocation!)
-                
-                let distance = distanceInMeters / 1609.344
-                let distanceStr = String(format: "%.2f", distance)
-                distanceCounterLabel.text = "\(distanceStr) mi away"
-                
-                if Double(distance) <= Double(Settings.sharedInstance.radius) {
-                    playAlarm()
-                }
-            }
-        }
-    } */
     
     func playAlarm() {
         snoozeAlarmBoolean = false
@@ -195,7 +177,5 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                 }
             }
         }
-        
     }
-    
 }

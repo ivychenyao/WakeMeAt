@@ -36,16 +36,12 @@ class Settings {
     
     func setDefaults() {
         print("Setting user defaults is happening")
+        UserDefaults.standard.set(true, forKey: "Settings did load")
+        
         UserDefaults.standard.set(radius, forKey: "radius")
         //UserDefaults.standard.set(alarm, forKey: "alarm")
         UserDefaults.standard.set(volume, forKey: "volume")
         UserDefaults.standard.set(vibration, forKey: "vibration")
         UserDefaults.standard.set(Sounds.sharedInstance.alarmRow, forKey: "alarm row")
-        
-//        radius = UserDefaults.standard.double(forKey: "radius")
-//        //alarm = UserDefaults.standard.object(forKey: "alarm")
-//        volume = UserDefaults.standard.float(forKey: "volume")
-//        vibration = UserDefaults.standard.float(forKey: "vibration")
-//        Sounds.sharedInstance.alarmRow = UserDefaults.standard.integer(forKey: "alarm row")
     }
 }

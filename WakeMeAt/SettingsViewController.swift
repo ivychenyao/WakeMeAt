@@ -6,8 +6,6 @@
 //  Copyright © 2016 Ivy Chenyao. All rights reserved.
 //
 
-// TODO: Make sure other View Controller still running when user is in Settings
-
 import UIKit
 import AudioToolbox
 import MediaPlayer
@@ -39,8 +37,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.alarmSoundChoices.delegate = self
         self.alarmSoundChoices.dataSource = self
         
+        // Settings variables are what the user entered previously, doesn't go back to default each time
         Settings.sharedInstance.radius = UserDefaults.standard.double(forKey: "radius")
-        //alarm = UserDefaults.standard.object(forKey: "alarm")
+        //Settings.sharedInstance.alarm = UserDefaults.standard.object(forKey: "alarm") as! AVAudioPlayer
         Settings.sharedInstance.volume = UserDefaults.standard.float(forKey: "volume")
         Settings.sharedInstance.vibration = UserDefaults.standard.float(forKey: "vibration")
         Sounds.sharedInstance.alarmRow = UserDefaults.standard.integer(forKey: "alarm row")
@@ -49,7 +48,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopSound()
-        Settings.sharedInstance.setDefaults()
+        Settings.sharedInstance.setDefaults() // Saves user-entered Settings variables as app default
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,7 +56,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         radius.text = "\(Settings.sharedInstance.radius!)"
         alarmSoundChoices.selectRow(Sounds.sharedInstance.alarmRow, inComponent: 0, animated: true)
-        
         volumeSlider.value = Settings.sharedInstance.volume
         vibrationSlider?.value = Settings.sharedInstance.vibration
         
