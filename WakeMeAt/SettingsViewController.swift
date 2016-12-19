@@ -38,11 +38,18 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         self.alarmSoundChoices.delegate = self
         self.alarmSoundChoices.dataSource = self
+        
+        Settings.sharedInstance.radius = UserDefaults.standard.double(forKey: "radius")
+        //alarm = UserDefaults.standard.object(forKey: "alarm")
+        Settings.sharedInstance.volume = UserDefaults.standard.float(forKey: "volume")
+        Settings.sharedInstance.vibration = UserDefaults.standard.float(forKey: "vibration")
+        Sounds.sharedInstance.alarmRow = UserDefaults.standard.integer(forKey: "alarm row")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopSound()
+        Settings.sharedInstance.setDefaults()
     }
     
     override func viewDidAppear(_ animated: Bool) {
