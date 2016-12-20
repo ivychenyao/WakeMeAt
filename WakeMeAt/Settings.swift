@@ -19,13 +19,6 @@ class Settings {
     
     // Reset values to default in Settings. Called from SettingsViewController
     func reset() {
-        /*radius = 1.0
-        alarm = Sounds.sharedInstance.alarmBuzzerPlayer
-        Sounds.sharedInstance.alarmRow = 0
-        volume = 0.5
-        vibration = 0.5*/
-        
-        // NONE OF THIS IS WORKING LOL. ONLY RADIUS...RESET WORKS BUT NOTHING SAVES...
         radius = UserDefaults.standard.double(forKey: "radius")
         //alarm = UserDefaults.standard.object(forKey: "alarm")
         Sounds.sharedInstance.alarmRow = UserDefaults.standard.integer(forKey: "alarm row")

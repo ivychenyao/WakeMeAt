@@ -63,8 +63,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         } catch let error {
             print(error.localizedDescription)
         }
-        
-        UserDefaults.standard.set(false, forKey: "Settings did load")
     }
     
     override func viewDidAppear(_ animated: Bool) {

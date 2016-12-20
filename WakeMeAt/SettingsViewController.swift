@@ -105,9 +105,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         Settings.sharedInstance.reset()
 
         radius.text = "\(Settings.sharedInstance.radius!)"
-        alarmSoundChoices.selectRow(0, inComponent: 0, animated: true)
-        volumeSlider.value = 0.5
-        vibrationSlider?.value = 0.5
+        alarmSoundChoices.selectRow(Sounds.sharedInstance.alarmRow, inComponent: 0, animated: true)
+        volumeSlider.value = Settings.sharedInstance.volume
+        vibrationSlider?.value = Settings.sharedInstance.vibration
     }
     
     func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {
