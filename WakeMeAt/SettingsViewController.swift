@@ -185,8 +185,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         
         stopSound()
-        
         playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: 0)
-        
     }
 }

@@ -11,7 +11,6 @@ import AudioToolbox
 import MediaPlayer
 
 class Sounds {
-    
     static let sharedInstance = Sounds()
     
     var alarmSound: AVAudioPlayer

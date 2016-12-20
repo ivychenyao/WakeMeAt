@@ -21,22 +21,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Train" translatesAutoresizingMaskIntoConstraints="NO" id="iwj-f5-AHh">
+                            <imageView userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Train" translatesAutoresizingMaskIntoConstraints="NO" id="iwj-f5-AHh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="tintColor" red="0.2274509804" green="0.52156862749999999" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Wake Me At" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFT-Pk-2aa">
-                                <rect key="frame" x="68.5" y="367" width="245.5" height="60"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
-                                <color key="textColor" red="0.2274509804" green="0.52156862749999999" blue="0.47450980390000003" alpha="0.95573814655172418" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXc-Qv-3Cx">
-                                <rect key="frame" x="0.0" y="179" width="375" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="3xx-n8-Mfn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXc-Qv-3Cx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3xx-n8-Mfn">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteAlarmClock" translatesAutoresizingMaskIntoConstraints="NO" id="E51-HD-pyk">
+                                            <rect key="frame" x="122" y="269" width="130" height="130"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="130" id="CON-Qi-HPA"/>
+                                                <constraint firstAttribute="height" constant="130" id="RHg-pd-np2"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="me at" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEG-OV-4Pt">
+                                            <rect key="frame" x="104" y="387" width="167" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="65" id="Mvs-UN-Kb1"/>
+                                                <constraint firstAttribute="width" constant="167" id="ecS-W0-fnb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="37"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wake" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvv-Yc-mUi">
+                                            <rect key="frame" x="104" y="209" width="167" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="65" id="4v6-qi-jR5"/>
+                                                <constraint firstAttribute="width" constant="167" id="XOc-kM-tIH"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="37"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="fvv-Yc-mUi" secondAttribute="trailing" constant="104" id="3bz-HP-HzK"/>
+                                        <constraint firstItem="fvv-Yc-mUi" firstAttribute="leading" secondItem="3xx-n8-Mfn" secondAttribute="leading" constant="104" id="A2x-pT-dZ5"/>
+                                        <constraint firstItem="E51-HD-pyk" firstAttribute="top" secondItem="fvv-Yc-mUi" secondAttribute="bottom" constant="-5" id="IdN-42-mDg"/>
+                                        <constraint firstItem="E51-HD-pyk" firstAttribute="centerY" secondItem="3xx-n8-Mfn" secondAttribute="centerY" id="Kj0-J3-JUs"/>
+                                        <constraint firstItem="WEG-OV-4Pt" firstAttribute="leading" secondItem="3xx-n8-Mfn" secondAttribute="leading" constant="104" id="hLl-xi-4go"/>
+                                        <constraint firstItem="E51-HD-pyk" firstAttribute="centerX" secondItem="fvv-Yc-mUi" secondAttribute="centerX" id="iIu-Fe-fTx"/>
+                                        <constraint firstAttribute="trailing" secondItem="WEG-OV-4Pt" secondAttribute="trailing" constant="104" id="l7t-sw-wMI"/>
+                                        <constraint firstItem="WEG-OV-4Pt" firstAttribute="top" secondItem="E51-HD-pyk" secondAttribute="bottom" constant="-12" id="n7v-5f-3ic"/>
+                                        <constraint firstItem="WEG-OV-4Pt" firstAttribute="centerX" secondItem="E51-HD-pyk" secondAttribute="centerX" id="nND-uF-pS0"/>
+                                        <constraint firstItem="E51-HD-pyk" firstAttribute="centerX" secondItem="3xx-n8-Mfn" secondAttribute="centerX" id="oaB-iL-1lT"/>
+                                    </constraints>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
@@ -46,8 +80,11 @@
                             <constraint firstAttribute="trailing" secondItem="iwj-f5-AHh" secondAttribute="trailing" id="Fh3-66-nap"/>
                             <constraint firstItem="iwj-f5-AHh" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="JIc-AV-iHB"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="iwj-f5-AHh" secondAttribute="bottom" id="Nhp-7K-M71"/>
+                            <constraint firstItem="nXc-Qv-3Cx" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="QDc-Wr-LhT"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="nXc-Qv-3Cx" secondAttribute="bottom" id="WbG-ux-HrV"/>
+                            <constraint firstAttribute="trailing" secondItem="nXc-Qv-3Cx" secondAttribute="trailing" id="ZJg-wT-cfv"/>
                             <constraint firstItem="iwj-f5-AHh" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="bWC-lc-FWh"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="SFT-Pk-2aa" secondAttribute="bottom" constant="240" id="eP5-em-h4g"/>
+                            <constraint firstItem="nXc-Qv-3Cx" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="hD9-CE-F1y"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -58,5 +95,6 @@
     </scenes>
     <resources>
         <image name="Train" width="1280" height="800"/>
+        <image name="WhiteAlarmClock" width="120" height="120"/>
     </resources>
 </document>
