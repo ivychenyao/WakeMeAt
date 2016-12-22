@@ -37,7 +37,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.alarmSoundChoices.delegate = self
         self.alarmSoundChoices.dataSource = self
         
-        // Settings variables are what the user entered previously, doesn't go back to default each time
+        // Settings variables are what the user entered previously, doesn't go back to program's default each time
         Settings.sharedInstance.radius = UserDefaults.standard.double(forKey: "radius")
         //Settings.sharedInstance.alarm = UserDefaults.standard.object(forKey: "alarm") as! AVAudioPlayer
         Settings.sharedInstance.volume = UserDefaults.standard.float(forKey: "volume")

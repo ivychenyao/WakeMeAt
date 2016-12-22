@@ -39,7 +39,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="me at" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEG-OV-4Pt">
-                                            <rect key="frame" x="104" y="387" width="167" height="65"/>
+                                            <rect key="frame" x="104" y="398" width="167" height="65"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="65" id="Mvs-UN-Kb1"/>
                                                 <constraint firstAttribute="width" constant="167" id="ecS-W0-fnb"/>
@@ -49,7 +49,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wake" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvv-Yc-mUi">
-                                            <rect key="frame" x="104" y="209" width="167" height="65"/>
+                                            <rect key="frame" x="104" y="194" width="167" height="65"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="65" id="4v6-qi-jR5"/>
                                                 <constraint firstAttribute="width" constant="167" id="XOc-kM-tIH"/>
@@ -62,12 +62,12 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="fvv-Yc-mUi" secondAttribute="trailing" constant="104" id="3bz-HP-HzK"/>
                                         <constraint firstItem="fvv-Yc-mUi" firstAttribute="leading" secondItem="3xx-n8-Mfn" secondAttribute="leading" constant="104" id="A2x-pT-dZ5"/>
-                                        <constraint firstItem="E51-HD-pyk" firstAttribute="top" secondItem="fvv-Yc-mUi" secondAttribute="bottom" constant="-5" id="IdN-42-mDg"/>
+                                        <constraint firstItem="E51-HD-pyk" firstAttribute="top" secondItem="fvv-Yc-mUi" secondAttribute="bottom" constant="10" id="IdN-42-mDg"/>
                                         <constraint firstItem="E51-HD-pyk" firstAttribute="centerY" secondItem="3xx-n8-Mfn" secondAttribute="centerY" id="Kj0-J3-JUs"/>
                                         <constraint firstItem="WEG-OV-4Pt" firstAttribute="leading" secondItem="3xx-n8-Mfn" secondAttribute="leading" constant="104" id="hLl-xi-4go"/>
                                         <constraint firstItem="E51-HD-pyk" firstAttribute="centerX" secondItem="fvv-Yc-mUi" secondAttribute="centerX" id="iIu-Fe-fTx"/>
                                         <constraint firstAttribute="trailing" secondItem="WEG-OV-4Pt" secondAttribute="trailing" constant="104" id="l7t-sw-wMI"/>
-                                        <constraint firstItem="WEG-OV-4Pt" firstAttribute="top" secondItem="E51-HD-pyk" secondAttribute="bottom" constant="-12" id="n7v-5f-3ic"/>
+                                        <constraint firstItem="WEG-OV-4Pt" firstAttribute="top" secondItem="E51-HD-pyk" secondAttribute="bottom" constant="-1" id="n7v-5f-3ic"/>
                                         <constraint firstItem="WEG-OV-4Pt" firstAttribute="centerX" secondItem="E51-HD-pyk" secondAttribute="centerX" id="nND-uF-pS0"/>
                                         <constraint firstItem="E51-HD-pyk" firstAttribute="centerX" secondItem="3xx-n8-Mfn" secondAttribute="centerX" id="oaB-iL-1lT"/>
                                     </constraints>

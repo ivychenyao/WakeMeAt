@@ -237,7 +237,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="XUH-C1-81E"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -321,7 +321,6 @@
         <!--Navigation Controller-->
         <scene sceneID="1bH-gj-ngB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ihq-6v-V0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hYT-ar-pbA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hhf-Gr-Umz">
@@ -333,6 +332,7 @@
                         <segue destination="9Lk-f6-Y0K" kind="relationship" relationship="rootViewController" id="m5F-zg-vgL"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ihq-6v-V0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="45.600000000000001" y="763.26836581709154"/>
         </scene>
