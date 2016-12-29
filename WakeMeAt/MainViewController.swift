@@ -40,8 +40,10 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest // How accurate
+        //locationManager.desiredAccuracy = kCLLocationAccuracyBest // How accurate
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
         
         self.mapView.delegate = self
         

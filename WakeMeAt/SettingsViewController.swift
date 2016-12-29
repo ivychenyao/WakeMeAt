@@ -118,6 +118,14 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func playChosenSound(chosenSound: AVAudioPlayer, numLoops: Int) {
         chosenSound.numberOfLoops = numLoops
         chosenSound.volume = Settings.sharedInstance.volume
+
+        // Alarm sound plays even if phone is locked or app is in background
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
         chosenSound.play()
     }
     
