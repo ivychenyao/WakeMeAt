@@ -5,6 +5,7 @@
 //  Created by Ivy Chenyao on 11/17/16.
 //  Copyright © 2016 Ivy Chenyao. All rights reserved.
 //
+// TO-DO: Add Favorite Places feature with UserDefaults
 
 import UIKit
 import MapKit
@@ -90,6 +91,23 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         // Only executes if user never went into Settings - ensures UserDefaults are default values and not all 0
         if UserDefaults.standard.bool(forKey: "Settings did load") == false {
             Settings.sharedInstance.setDefaults()
+        }
+        
+        // Ensures user default alarm sound is correct
+        if UserDefaults.standard.integer(forKey: "alarm row") != 0 {
+            do {
+                Sounds.sharedInstance.alarmBuzzerPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.alarmBuzzerURL as URL)
+                Sounds.sharedInstance.policeSirenPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.policeSirenURL as URL)
+                Sounds.sharedInstance.doorbellPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.doorbellURL as URL)
+                Sounds.sharedInstance.ambulancePlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.ambulanceURL as URL)
+                Sounds.sharedInstance.hornHonkPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.hornHonkURL as URL)
+                Sounds.sharedInstance.fireAlarmPlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.fireAlarmURL as URL)
+                Sounds.sharedInstance.nonePlayer = try AVAudioPlayer(contentsOf: Sounds.sharedInstance.noneURL as URL)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+            
+            settingsViewController.overridePickerView(row: UserDefaults.standard.integer(forKey: "alarm row"))
         }
     }
 

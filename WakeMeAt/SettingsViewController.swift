@@ -39,7 +39,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         // Settings variables are what the user entered previously, doesn't go back to program's default each time
         Settings.sharedInstance.radius = UserDefaults.standard.double(forKey: "radius")
-        //Settings.sharedInstance.alarm = UserDefaults.standard.object(forKey: "alarm") as! AVAudioPlayer
         Settings.sharedInstance.volume = UserDefaults.standard.float(forKey: "volume")
         Settings.sharedInstance.vibration = UserDefaults.standard.float(forKey: "vibration")
         Sounds.sharedInstance.alarmRow = UserDefaults.standard.integer(forKey: "alarm row")
@@ -118,7 +117,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func stopSound() {
         Sounds.sharedInstance.alarmSound.stop()
-        Sounds.sharedInstance.alarmBuzzerPlayer.stop() // TODO: Bad access
+        Sounds.sharedInstance.alarmBuzzerPlayer.stop() // TODO: BAD ACCESS
         Sounds.sharedInstance.policeSirenPlayer.stop()
         Sounds.sharedInstance.doorbellPlayer.stop()
         Sounds.sharedInstance.ambulancePlayer.stop()
@@ -184,7 +183,53 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             Sounds.sharedInstance.alarmRow = 6
         }
         
+        // Sample sound is played when user scrolls through alarm picker
         stopSound()
         playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: 0)
+    }
+    
+    // When app opens up, alarm sound defaults to the user's previous pick
+    func overridePickerView(row: Int) {
+        if row == 0 {
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.alarmBuzzerPlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.alarmBuzzerURL
+            Sounds.sharedInstance.alarmRow = 0
+        }
+            
+        else if row == 1 {
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.policeSirenPlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.policeSirenURL
+            Sounds.sharedInstance.alarmRow = 1
+        }
+            
+        else if row == 2 {
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.doorbellPlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.doorbellURL
+            Sounds.sharedInstance.alarmRow = 2
+        }
+            
+        else if row == 3 {
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.ambulancePlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.ambulanceURL
+            Sounds.sharedInstance.alarmRow = 3
+        }
+            
+        else if row == 4 {
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.hornHonkPlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.hornHonkURL
+            Sounds.sharedInstance.alarmRow = 4
+        }
+            
+        else if row == 5 {
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.fireAlarmPlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.fireAlarmURL
+            Sounds.sharedInstance.alarmRow = 5
+        }
+            
+        else if row == 6 {
+            Sounds.sharedInstance.alarmSound = Sounds.sharedInstance.nonePlayer
+            Sounds.sharedInstance.alarmSoundURL = Sounds.sharedInstance.noneURL
+            Sounds.sharedInstance.alarmRow = 6
+        }
     }
 }
