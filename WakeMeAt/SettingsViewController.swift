@@ -88,9 +88,15 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func slideVolume(_ sender: UISlider) {
         Settings.sharedInstance.volume = volumeSlider.value
+        
+        // Adjusts phone system volumes accordingly
+        let volumeView = MPVolumeView()
+        if let view = volumeView.subviews.first as? UISlider {
+            view.value = volumeSlider.value
+        }
     }
     
-    // TODO: Change so that phone vibrates increasingly with slider, not just vibrates once
+    // TO-DO: Change so that phone vibrates increasingly with slider, not just vibrates once
     @IBAction func setVibration(_ sender: UISlider) {
         Settings.sharedInstance.vibration = vibrationSlider?.value
         
