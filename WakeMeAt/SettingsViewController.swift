@@ -131,7 +131,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func stopSound() {
         Sounds.sharedInstance.alarmSound.stop()
-        Sounds.sharedInstance.alarmBuzzerPlayer.stop() // TODO: BAD ACCESS
+        Sounds.sharedInstance.alarmBuzzerPlayer.stop()
         Sounds.sharedInstance.policeSirenPlayer.stop()
         Sounds.sharedInstance.doorbellPlayer.stop()
         Sounds.sharedInstance.ambulancePlayer.stop()

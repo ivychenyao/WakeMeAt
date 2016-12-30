@@ -40,8 +40,9 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        //locationManager.desiredAccuracy = kCLLocationAccuracyBest // How accurate
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestAlwaysAuthorization()
+        // locationManager.desiredAccuracy = kCLLocationAccuracyBest // How accurate
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
         
@@ -95,6 +96,9 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             Settings.sharedInstance.setDefaults()
         }
         
+        // Ensures user default radius value is correct
+        Settings.sharedInstance.radius = UserDefaults.standard.double(forKey: "radius")
+        
         // Ensures user default alarm sound is correct
         if UserDefaults.standard.integer(forKey: "alarm row") != 0 {
             do {
@@ -135,7 +139,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         if playAlarmBoolean == true {
             settingsViewController.playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: -1) // -1 plays sound in never ending loop
             if Settings.sharedInstance.vibration > 0 {
-                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate)) // used to have AudioServicesPlayAlertSound
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
             
             let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(Settings.sharedInstance.radius!) mi away from your destination", preferredStyle:.alert)
@@ -153,7 +157,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         playAlarmBoolean = false
         userDestination = nil
         hereAlert.dismiss(animated: false, completion: nil)
-        settingsViewController.stopSound()
+        Sounds.sharedInstance.alarmSound.stop()
         distanceCounterLabel.text = "No destination set"
         resultSearchController?.searchBar.text = ""
         counter = 0
