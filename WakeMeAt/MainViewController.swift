@@ -150,6 +150,15 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             hereAlert.addAction(snoozeOption)
             
             self.present(hereAlert, animated: true, completion: nil)
+            
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.vibrate), userInfo: nil, repeats: true)
+
+        }
+    }
+    
+    func vibrate() {
+        if playAlarmBoolean == true && snoozeAlarmBoolean == false && Settings.sharedInstance.vibration > 0 {
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
     }
     
@@ -165,8 +174,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     func snoozeOptionClicked(hereAlert: UIAlertController) {
         snoozeAlarmBoolean = true
-        counter = 0 // Necessary?
-        settingsViewController.stopSound()
+        counter = 0
+        Sounds.sharedInstance.alarmSound.stop()
         let deadlineTime = DispatchTime.now() + .seconds(60)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
             self.playAlarm()
