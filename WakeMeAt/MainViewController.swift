@@ -5,7 +5,6 @@
 //  Created by Ivy Chenyao on 11/17/16.
 //  Copyright © 2016 Ivy Chenyao. All rights reserved.
 //
-// TO-DO: Add Favorite Places feature with UserDefaults
 
 import UIKit
 import MapKit
@@ -170,7 +169,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     func vibrate() {
-        if playAlarmBoolean == true && snoozeAlarmBoolean == false && Settings.sharedInstance.vibration > 0 {
+        if playAlarmBoolean == true && snoozeAlarmBoolean == false && counter >= 1 && Settings.sharedInstance.vibration > 0 {
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
     }

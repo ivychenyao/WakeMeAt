@@ -58,7 +58,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         volumeSlider.value = Settings.sharedInstance.volume
         vibrationSlider?.value = Settings.sharedInstance.vibration
         
-        stopSound() // optional?
+        stopSound()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -96,7 +96,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     
-    // TO-DO: Change so that phone vibrates increasingly with slider, not just vibrates once
     @IBAction func setVibration(_ sender: UISlider) {
         Settings.sharedInstance.vibration = vibrationSlider?.value
         
