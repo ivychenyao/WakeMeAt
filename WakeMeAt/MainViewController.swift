@@ -142,7 +142,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     func playAlarm() {
         snoozeAlarmBoolean = false
         if playAlarmBoolean == true {
-            settingsViewController.playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: -1) // -1 plays sound in never ending loop
             if Settings.sharedInstance.vibration > 0 {
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
@@ -155,15 +154,11 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             hereAlert.addAction(snoozeOption)
             
             // If user chooses a destination that is already within the given radius, "Alarm Set" alert is dismissed before "YOU HAVE ARRIVED" alert appears
-            if alarmSetAlert == nil {
-                self.present(hereAlert, animated: true, completion: nil)
-            }
+            alarmSetAlert?.dismiss(animated: false, completion: { () -> Void in
+                self.present(hereAlert, animated: true, completion: nil) })
             
-            else {
-                alarmSetAlert?.dismiss(animated: false, completion: { () -> Void in
-                    self.present(hereAlert, animated: true, completion: nil) })
-            }
-            
+            self.present(hereAlert, animated: true, completion: nil)
+            settingsViewController.playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: -1) // -1 plays sound in never ending loop
             Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.vibrate), userInfo: nil, repeats: true)
         }
     }
