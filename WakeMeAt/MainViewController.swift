@@ -31,7 +31,9 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var userDestination: CLLocation? = nil
     var counter = 0
     var snoozeAlarmBoolean = false
-    var alarmSetAlert: UIAlertController? = nil
+    var dimAlert: UIAlertController? = nil
+    var alertShowingBoolean = false
+    let defaultBrightness = UIScreen.main.brightness
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,21 +132,57 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         userDestination = CLLocation(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude)
         
-        playAlarmBoolean = true
         
+        dimAlert = UIAlertController(title: "Dim screen brightness?", message: "Doing so will save your battery life while you are travelling to your destination", preferredStyle: .alert)
+        let noOption = UIAlertAction(title: "No", style: .destructive, handler: {(UIAlertAction) in (self.alertShowingBoolean = false)})
+        let yesOption = UIAlertAction(title: "Yes", style: .default, handler: {(UIAlertAction) in self.dimScreen()})
+        dimAlert?.addAction(noOption)
+        dimAlert?.addAction(yesOption)
+        self.present(dimAlert!, animated: true, completion: nil)
+        alertShowingBoolean = true
+        
+        playAlarmBoolean = true
+
+        
+        
+        //self.present(dimAlert, animated: true, completion: nil)
+        
+        /*
         // Pop up alert appears once alarm is set, but if destination already reached, the other pop up associated doesn't appear but the sounds and vibrations go off
-        alarmSetAlert = UIAlertController(title: "Alarm Set", message: "It will go off \(Settings.sharedInstance.radius!) mi away from \(placemark.name!)", preferredStyle: .alert)
-        let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-        alarmSetAlert?.addAction(okOption)
+        alarmSetAlert = UIAlertController(title: "Destination Set", message: nil, preferredStyle: .alert)
+        //let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+        //alarmSetAlert?.addAction(okOption)
         self.present(alarmSetAlert!, animated: true, completion: nil)
+        
+        let when = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: when){
+            // your code with delay
+            self.alarmSetAlert?.dismiss(animated: true, completion: nil)
+ 
+        }*/
+    }
+    
+    func dimScreen() {
+        UIScreen.main.brightness = 0
+        alertShowingBoolean = false
     }
     
     func playAlarm() {
         snoozeAlarmBoolean = false
+        
+        if alertShowingBoolean == true {
+            dimAlert?.dismiss(animated: true, completion: nil)
+            alertShowingBoolean = false
+        }
+        
         if playAlarmBoolean == true {
+            settingsViewController.playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: -1) // -1 plays sound in never ending loop
+
             if Settings.sharedInstance.vibration > 0 {
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
+            
+            UIScreen.main.brightness = defaultBrightness
             
             let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(Settings.sharedInstance.radius!) mi away from your destination", preferredStyle:.alert)
             let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) in self.okOptionClicked(hereAlert: hereAlert)})
@@ -153,12 +191,12 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             let snoozeOption = UIAlertAction(title: "Snooze for 1 minute", style: UIAlertActionStyle.destructive, handler: {(UIAlertAction) in self.snoozeOptionClicked(hereAlert: hereAlert)})
             hereAlert.addAction(snoozeOption)
             
-            // If user chooses a destination that is already within the given radius, "Alarm Set" alert is dismissed before "YOU HAVE ARRIVED" alert appears
-            alarmSetAlert?.dismiss(animated: false, completion: { () -> Void in
-                self.present(hereAlert, animated: true, completion: nil) })
+            // Alert displays after a second of vibration and sound
+            let when = DispatchTime.now() + 1
+            DispatchQueue.main.asyncAfter(deadline: when){
+                self.present(hereAlert, animated: true, completion: nil)
+            }
             
-            self.present(hereAlert, animated: true, completion: nil)
-            settingsViewController.playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: -1) // -1 plays sound in never ending loop
             Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.vibrate), userInfo: nil, repeats: true)
         }
     }
@@ -183,6 +221,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         snoozeAlarmBoolean = true
         counter = 0
         Sounds.sharedInstance.alarmSound.stop()
+        UIScreen.main.brightness = 0
         let deadlineTime = DispatchTime.now() + .seconds(60)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
             self.playAlarm()
@@ -199,7 +238,8 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         if userDestination != nil {
             if playAlarmBoolean == true {
-                // UIApplication.shared.isIdleTimerDisabled = true // Stops screen from sleeping
+                UIApplication.shared.isIdleTimerDisabled = true // Stops screen from sleeping
+                
                 let distanceInMeters = userDestination!.distance(from: userCurrentLocation!)
                 
                 let distance = distanceInMeters / 1609.344
