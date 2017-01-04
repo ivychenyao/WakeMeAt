@@ -31,9 +31,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var userDestination: CLLocation? = nil
     var counter = 0
     var snoozeAlarmBoolean = false
-    var dimAlert: UIAlertController? = nil
-    var alertShowingBoolean = false
-    let defaultBrightness = UIScreen.main.brightness
+    var alarmSetAlert: UIAlertController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,49 +130,25 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         mapView.setRegion(region, animated: true)
         
         userDestination = CLLocation(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude)
-        
-        
-        dimAlert = UIAlertController(title: "Dim screen brightness?", message: "Doing so will save your battery life while you are travelling to your destination", preferredStyle: .alert)
-        let noOption = UIAlertAction(title: "No", style: .destructive, handler: {(UIAlertAction) in (self.alertShowingBoolean = false)})
-        let yesOption = UIAlertAction(title: "Yes", style: .default, handler: {(UIAlertAction) in self.dimScreen()})
-        dimAlert?.addAction(noOption)
-        dimAlert?.addAction(yesOption)
-        self.present(dimAlert!, animated: true, completion: nil)
-        alertShowingBoolean = true
-        
         playAlarmBoolean = true
-
         
-        
-        //self.present(dimAlert, animated: true, completion: nil)
-        
-        /*
         // Pop up alert appears once alarm is set, but if destination already reached, the other pop up associated doesn't appear but the sounds and vibrations go off
         alarmSetAlert = UIAlertController(title: "Destination Set", message: nil, preferredStyle: .alert)
-        //let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-        //alarmSetAlert?.addAction(okOption)
         self.present(alarmSetAlert!, animated: true, completion: nil)
         
         let when = DispatchTime.now() + 1
-        DispatchQueue.main.asyncAfter(deadline: when){
-            // your code with delay
+        DispatchQueue.main.asyncAfter(deadline: when) {
             self.alarmSetAlert?.dismiss(animated: true, completion: nil)
- 
-        }*/
-    }
-    
-    func dimScreen() {
-        UIScreen.main.brightness = 0
-        alertShowingBoolean = false
+        }
+        
+        let volumeView = MPVolumeView()
+        if let view = volumeView.subviews.first as? UISlider {
+            view.value = UserDefaults.standard.float(forKey: "volume")
+        }
     }
     
     func playAlarm() {
         snoozeAlarmBoolean = false
-        
-        if alertShowingBoolean == true {
-            dimAlert?.dismiss(animated: true, completion: nil)
-            alertShowingBoolean = false
-        }
         
         if playAlarmBoolean == true {
             settingsViewController.playChosenSound(chosenSound: Sounds.sharedInstance.alarmSound, numLoops: -1) // -1 plays sound in never ending loop
@@ -182,8 +156,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             if Settings.sharedInstance.vibration > 0 {
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
-            
-            UIScreen.main.brightness = defaultBrightness
             
             let hereAlert = UIAlertController(title: "YOU HAVE ARRIVED", message: "You are now \(Settings.sharedInstance.radius!) mi away from your destination", preferredStyle:.alert)
             let okOption = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) in self.okOptionClicked(hereAlert: hereAlert)})
@@ -222,7 +194,6 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         snoozeAlarmBoolean = true
         counter = 0
         Sounds.sharedInstance.alarmSound.stop()
-        UIScreen.main.brightness = 0
         let deadlineTime = DispatchTime.now() + .seconds(60)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
             self.playAlarm()

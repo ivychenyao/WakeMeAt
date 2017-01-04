@@ -41,14 +41,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="se9-Rv-EiP">
-                                <rect key="frame" x="20" y="188" width="115" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="se9-Rv-EiP">
+                                <rect key="frame" x="20" y="188" width="52" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.0" borderStyle="roundedRect" placeholder="Enter radius (mi)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lMM-0V-H80">
-                                <rect key="frame" x="187" y="79" width="168" height="30"/>
+                                <rect key="frame" x="184" y="79" width="171" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -123,10 +123,11 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTt-Mc-Rkq">
-                                <rect key="frame" x="187" y="118" width="172" height="165"/>
+                                <rect key="frame" x="184" y="118" width="175" height="165"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="165" id="4Fv-Ef-FKK"/>
+                                    <constraint firstAttribute="width" constant="175" id="Tad-sC-1ee"/>
                                 </constraints>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibration Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyk-KF-6zI">
@@ -156,7 +157,6 @@
                             <constraint firstItem="1mO-hm-Iw5" firstAttribute="top" secondItem="cDl-2l-9Pb" secondAttribute="top" id="K8y-fv-c0S"/>
                             <constraint firstItem="kTt-Mc-Rkq" firstAttribute="leading" secondItem="lMM-0V-H80" secondAttribute="leading" id="LVJ-uD-h4a"/>
                             <constraint firstItem="se9-Rv-EiP" firstAttribute="leading" secondItem="8g2-QY-zt1" secondAttribute="leading" id="Mpz-Pb-asp"/>
-                            <constraint firstItem="kTt-Mc-Rkq" firstAttribute="leading" secondItem="se9-Rv-EiP" secondAttribute="trailing" constant="52" id="Mxg-Eg-ZVP"/>
                             <constraint firstItem="gyG-5V-fHr" firstAttribute="top" secondItem="nyk-KF-6zI" secondAttribute="bottom" constant="19" id="Pqt-ln-dkG"/>
                             <constraint firstAttribute="bottom" secondItem="12F-1C-cg4" secondAttribute="bottom" constant="20" symbolic="YES" id="TFQ-fB-S5V"/>
                             <constraint firstItem="Hue-Gg-wca" firstAttribute="leading" secondItem="zAs-tw-LgJ" secondAttribute="leading" id="Vbm-z8-gdV"/>
@@ -175,6 +175,7 @@
                             <constraint firstItem="gyG-5V-fHr" firstAttribute="centerX" secondItem="Ohn-9s-xpo" secondAttribute="centerX" id="kGD-0V-1j6"/>
                             <constraint firstItem="lMM-0V-H80" firstAttribute="centerY" secondItem="8g2-QY-zt1" secondAttribute="centerY" id="mNL-JP-eVM"/>
                             <constraint firstItem="xBI-04-O5G" firstAttribute="centerY" secondItem="Ohn-9s-xpo" secondAttribute="centerY" id="n3E-5Y-Cuh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lMM-0V-H80" secondAttribute="trailing" constant="4" id="oXm-fz-y2r"/>
                             <constraint firstAttribute="trailing" secondItem="fTa-vF-MyQ" secondAttribute="trailing" id="pYu-2W-T3o"/>
                             <constraint firstItem="8g2-QY-zt1" firstAttribute="leading" secondItem="cDl-2l-9Pb" secondAttribute="leading" constant="20" id="qAW-uQ-0Oy"/>
                             <constraint firstItem="gyG-5V-fHr" firstAttribute="centerY" secondItem="Hue-Gg-wca" secondAttribute="centerY" id="qT4-pw-4XR"/>
