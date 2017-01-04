@@ -43,6 +43,7 @@ class MainViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
         

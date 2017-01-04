@@ -121,7 +121,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Alarm sound plays even if phone is locked or app is in background
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            //try AVAudioSession.sharedInstance().setActive(true)
+            try AVAudioSession.sharedInstance().setActive(true)
         } catch let error as NSError {
             print(error.localizedDescription)
         }
