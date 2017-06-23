@@ -1,5 +1,5 @@
 # WakeMeAt
-Ivy Chenyao and Marty Kausas
+Ivy Chenyao
 
 ## Description
 An iOS alarm clock app that goes off based on geographical location, aimed at train and bus riders who tend to sleep through their stops
